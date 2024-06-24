@@ -1,0 +1,196 @@
+// @import "mixins/mixins";
+// @import "common/var";
+// @import "button";
+// @import "./popper";
+
+.@{ns}-dropdown {
+  display: inline-flex;
+  position: relative;
+  color: @color-text-regular;
+  font-size: @font-size-base;
+  vertical-align: middle;
+
+  // .el-button-group {
+  //   display: block;
+  //   .el-button {
+  //     float: none;
+  //   }
+  // }
+
+  & &__caret-button {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    width: @dropdown-caret-width;
+    border-left: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 1px;
+      top: @dropdown-caret-gap;
+      bottom: @dropdown-caret-gap;
+      left: 0;
+      background: mix(@color-white, transparent, 50%);
+    }
+
+    &.@{ns}-button--default::before {
+      background: mix(@button-default-border-color, transparent, 50%);
+    }
+
+    &:hover {
+      &:not(.is-disabled)::before {
+        top: 0;
+        bottom: 0;
+      }
+    }
+
+    & .@{ns}-dropdown__icon {
+      padding-left: 0;
+    }
+
+    // Size
+    .loopSize(@index) when (@index =< length(@sizes)) {
+      @size: extract(@sizes, @index);
+
+      @caret-width-prop: ~'dropdown-caret-@{size}-width';
+      @caret-width: @@caret-width-prop;
+
+      @caret-gap-prop: ~'dropdown-caret-@{size}-gap';
+      @caret-gap: @@caret-gap-prop;
+
+      &.@{ns}-button--@{size} {
+        width: @caret-width;
+
+        &::before {
+          top: @caret-gap;
+          bottom: @caret-gap;
+        }
+      }
+      .loopSize(@index + 1);
+    }
+    .loopSize(1);
+  }
+
+  &__icon {
+    font-size: 12px;
+    margin: 0 3px;
+  }
+
+  // & &-selfdefine { // 自定义
+  //   outline: none;
+  //   font-size: inherit;
+  // }
+
+  [disabled] {
+    cursor: not-allowed;
+    color: @color-text-placeholder;
+  }
+}
+
+.@{ns}-dropdown-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: @select-dropdown-margin;
+  margin: @select-dropdown-margin;
+  background-color: @select-dropdown-background-color;
+  border: @select-dropdown-border;
+  border-radius: @select-dropdown-border-radius;
+  box-shadow: @dropdown-menu-box-shadow;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    list-style: none;
+    height: @select-option-height;
+    padding: 0 @dropdown-menu-item-padding-horizontal;
+    margin: 0;
+    line-height: @select-option-height;
+    font-size: @select-option-font-size;
+    color: @select-option-color;
+    cursor: pointer;
+    transition+: @fill-transition-base;
+    transition+: @color-transition-base;
+    outline: none;
+
+    &:not(.is-disabled):hover, &:focus {
+      background-color: @dropdown-menu-item-hover-fill;
+      color: @dropdown-menu-item-hover-color;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+
+    &--divided {
+      @divided-offset: 6px;
+
+      display: block;
+      position: relative;
+      margin-top: @divided-offset;
+      border-top: 1px solid @border-color-lighter;
+      height: calc(~'@{select-option-height} + @{divided-offset} - 1px');
+
+      &::before {
+        content: '';
+        height: @divided-offset;
+        display: block;
+        margin: 0 @dropdown-menu-item-padding-horizontal * -1;
+        background-color: @select-dropdown-background-color;
+      }
+    }
+
+    &.is-disabled {
+      cursor: default;
+      color: @select-option-disabled-color;
+      pointer-events: none;
+    }
+  }
+
+  // Size
+  .loopSize(@index) when (@index =< length(@sizes)) {
+    @size: extract(@sizes, @index);
+
+    @font-size-prop: ~'dropdown-menu-item-@{size}-font-size';
+    @font-size: @@font-size-prop;
+    @height-prop: ~'dropdown-menu-item-@{size}-height';
+    @height: @@height-prop;
+    @padding-horizontal-prop: ~'dropdown-menu-item-@{size}-padding-horizontal';
+    @menu-item-px: @@padding-horizontal-prop;
+    @padding-vertical-prop: ~'dropdown-menu-@{size}-padding-vertical';
+    @menu-py: @@padding-vertical-prop;
+
+    &--@{size} {
+      padding: @menu-py 0;
+      
+      .@{ns}-dropdown-menu__item {
+        height: @height;
+        line-height: @height;
+        padding: 0 @menu-item-px;
+        font-size: @font-size;
+
+        i {
+          margin-right: 4px;
+        }
+
+        &.@{ns}-dropdown-menu__item--divided {
+          @divided-offset: 4px;
+
+          margin-top: @divided-offset;
+          height: calc(~'@{height} + @{divided-offset} - 1px');
+
+          &::before {
+            height: @divided-offset;
+            margin: 0 @menu-item-px * -1;
+          }
+        }
+      }
+    }
+    .loopSize(@index + 1);
+  }
+  .loopSize(1);
+}

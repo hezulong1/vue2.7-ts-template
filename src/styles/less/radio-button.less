@@ -1,0 +1,152 @@
+.@{ns}-radio-button {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  outline: none;
+
+  &__inner {
+    position: relative;
+    .util-box-center(inline-flex);
+
+    height: @input-height;
+    margin: 0;
+
+    background-color: @button-default-background-color;
+    border: @border-base;
+    border-left: 0;
+
+    line-height: 1;
+    text-align: center;
+    color: @button-default-font-color;
+    font-weight: @button-font-weight;
+    white-space: nowrap;
+
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
+    transition: @all-transition;
+    cursor: pointer;
+    
+    .button-size(
+      calc(~'@{button-padding-vertical} - @{border-width-base}'),
+      calc(~'@{button-padding-horizontal} - @{border-width-base}'),
+      @button-font-size,
+      0
+    );
+
+    &:hover {
+      color: @color-primary;
+    }
+
+    & [class*="el-icon-"] {
+      & + span {
+        margin-left: 6px;
+      }
+      svg {
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  &:first-child &__inner {
+    border-left: @border-base;
+    border-radius: @border-radius-base 0 0 @border-radius-base;
+    box-shadow: none !important;
+  }
+
+  &:last-child &__inner {
+    border-radius: 0 @border-radius-base @border-radius-base 0;
+  }
+
+  &:first-child:last-child &__inner {
+    border-radius: @border-radius-base;
+  }
+
+  &:focus:not(:focus-visible):not(.is-focus):not(:active):not(.is-disabled){
+    box-shadow: 0 0 2px 2px @radio-button-checked-border-color;
+  }
+
+  &__orig-radio {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+
+    &:checked {
+      & + .@{ns}-radio-button__inner {
+        color: @radio-button-checked-font-color;
+        background-color: @radio-button-checked-background-color;
+        border-color: @radio-button-checked-border-color;
+        box-shadow: -1px 0 0 0 @radio-button-checked-border-color;
+      }
+    }
+
+    &:focus-visible {
+      & + .@{ns}-radio-button__inner {
+        // border-left: @border-base;
+        // border-left-color: @radio-button-checked-border-color;
+        outline: 2px solid mix(@radio-button-checked-border-color, @color-white, 50%);
+        outline-offset: 1px;
+        z-index: 2;
+        // border-radius: @border-radius-base;
+        box-shadow: none;
+      }
+    }
+
+    &:disabled {
+      & + .@{ns}-radio-button__inner {
+        color: @button-disabled-font-color;
+        cursor: not-allowed;
+        background-image: none;
+        background-color: @button-disabled-background-color;
+        border-color: @button-disabled-border-color;
+        box-shadow: none;
+      }
+      &:checked + .@{ns}-radio-button__inner {
+        background-color: @radio-button-disabled-checked-fill;
+      }
+    }
+  }
+
+  // Size
+  .loopSize(@index) when (@index =< length(@sizes)) {
+    @size: extract(@sizes, @index);
+    
+    @height-prop: ~'input-@{size}-height';
+    @height: @@height-prop;
+    @padding-vertical-prop: ~'button-@{size}-padding-vertical';
+    @padding-vertical: @@padding-vertical-prop;
+    @padding-horizontal-prop: ~'button-@{size}-padding-horizontal';
+    @padding-horizontal: @@padding-horizontal-prop;
+    @font-size-prop: ~'button-@{size}-font-size';
+    @font-size: @@font-size-prop;
+    @radius-prop: ~'radio-bordered-@{size}-border-radius';
+    @radius: @@radius-prop;
+
+    &--@{size} &__inner {
+      height: @height;
+      
+      .button-size(
+        calc(~'@{padding-vertical} - @{border-width-base}'),
+        calc(~'@{padding-horizontal} - @{border-width-base}'),
+        @font-size,
+        0
+      );
+    }
+
+    &--@{size}:first-child &__inner {
+      border-radius: @radius 0 0 @radius;
+    }
+
+    &--@{size}:last-child &__inner {
+      border-radius: 0 @radius @radius 0;
+    }
+
+    &--@{size}:first-child:last-child &__inner {
+      border-radius: @radius;
+    }
+
+    .loopSize(@index + 1);
+  }
+  .loopSize(1);
+}

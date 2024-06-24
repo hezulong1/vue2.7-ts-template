@@ -1,0 +1,127 @@
+// @import "mixins/mixins";
+// @import "mixins/utils";
+// @import (once, optional) "common/index";
+// @import (once, optional) "common/popup";
+
+.@{ns}-dialog {
+  position: relative;
+  margin: 0 auto 50px;
+  background: @dialog-background-color;
+  border-radius: @border-radius-small;
+  box-shadow: @dialog-box-shadow;
+  box-sizing: border-box;
+  width: 50%;
+
+  &.is-fullscreen {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    overflow: auto;
+  }
+
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // overflow: auto;
+    margin: 0;
+
+    > .@{ns}-scrollbar__bar .@{ns}-scrollbar__thumb {
+      background-color: @color-white;
+    }
+  }
+
+  &__header {
+    padding: @dialog-padding-secondary @dialog-padding-primary;
+    padding-bottom: @dialog-padding-secondary * 2 - @dialog-padding-primary;
+  }
+
+  &__headerbtn {
+    position: absolute;
+    top: @dialog-padding-secondary;
+    right: @dialog-padding-primary;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: @message-close-size;
+
+    .@{ns}-dialog__close {
+      color: @color-info;
+    }
+
+    &:focus, &:hover {
+      .@{ns}-dialog__close {
+        color: @color-primary;
+      }
+    }
+  }
+
+  &__title {
+    line-height: @dialog-font-line-height;
+    font-size: @dialog-title-font-size;
+    color: @color-text-primary;
+  }
+
+  &__body {
+    padding: @dialog-padding-secondary @dialog-padding-primary;
+    color: @color-text-regular;
+    font-size: @dialog-content-font-size;
+    word-break: break-all;
+  }
+
+  &__footer {
+    padding: @dialog-padding-secondary @dialog-padding-primary;
+    padding-top: @dialog-padding-secondary * 2 - @dialog-padding-primary;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  // 内容居中布局
+  &--center {
+    text-align: center;
+
+    .@{ns}-dialog__body {
+      text-align: initial;
+      padding: @dialog-font-line-height @dialog-padding-primary * 1.2 @dialog-padding-secondary * 2;
+    }
+
+    .@{ns}-dialog__footer {
+      text-align: inherit;
+    }
+  }
+}
+
+.dialog-fade-enter-active {
+  animation: dialog-fade-in .3s;
+}
+
+.dialog-fade-leave-active {
+  animation: dialog-fade-out .3s;
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}

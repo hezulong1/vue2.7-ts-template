@@ -1,0 +1,642 @@
+// @import "mixins/mixins";
+// @import "checkbox";
+// @import "tag";
+// @import "tooltip";
+// @import "common/var";
+
+.@{ns}-table {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  background-color: @color-white;
+  font-size: 14px;
+  color: @table-font-color;
+
+  // 数据为空
+  &__empty-block {
+    min-height: 60px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__empty-text {
+    // min-height doesn't work in IE10 and IE11 https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+    // set empty text line height up to contrainer min-height as workaround.
+    line-height: 60px;
+    width: 50%;
+    color: @color-text-secondary;
+  }
+
+  // 展开行
+  &__expand-column {
+    .cell {
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  &__expand-icon {
+    position: relative;
+    cursor: pointer;
+    color: #666;
+    font-size: 12px;
+    transition: transform 0.2s ease-in-out;
+    height: 20px;
+
+    &--expanded {
+      transform: rotate(90deg);
+    }
+
+    > .@{ns}-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -5px;
+      margin-top: -5px;
+    }
+  }
+
+  &__expanded-cell {
+    background-color: @color-white;
+
+    // 纯属为了增加权重
+    &[class*=cell] {
+      padding: 20px 50px;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  &__placeholder {
+    display: inline-block;
+    width: 20px;
+  }
+
+  &__append-wrapper {
+    // 避免外边距重合 https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing
+    overflow: hidden;
+  }
+
+  &--fit {
+    border-right: 0;
+    border-bottom: 0;
+
+    .@{ns}-table__cell.gutter {
+      border-right-width: 1px;
+    }
+  }
+
+  &--scrollable-x {
+    .@{ns}-table__body-wrapper {
+      overflow-x: auto;
+    }
+  }
+
+  &--scrollable-y {
+    .@{ns}-table__body-wrapper {
+      overflow-y: auto;
+    }
+  }
+
+  thead {
+    color: @table-header-font-color;
+    font-weight: 500;
+
+    &.is-group {
+      th.@{ns}-table__cell {
+        background: @fill-light;
+      }
+    }
+  }
+
+  .@{ns}-table__cell {
+    // padding: 12px 0;
+    padding: 8px 0;
+    min-width: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+
+    &.is-center {
+      text-align: center;
+    }
+
+    &.is-right {
+      text-align: right;
+    }
+
+    &.gutter {
+      width: 15px;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      padding: 0;
+    }
+
+    &.is-hidden {
+      > * {
+        visibility: hidden;
+      }
+    }
+  }
+
+  // &--medium {
+  //   .@{ns}-table__cell {
+  //     padding: 10px 0;
+  //   }
+  // }
+
+  &--small {
+    font-size: 12px;
+    .@{ns}-table__cell {
+      padding: 6px 0;
+    }
+  }
+
+  &--mini {
+    font-size: 12px;
+    .@{ns}-table__cell {
+      padding: 4px 0;
+    }
+  }
+
+  tr {
+    background-color: @color-white;
+
+    input[type="checkbox"] {
+      margin: 0;
+    }
+  }
+
+  th.@{ns}-table__cell.is-leaf,
+  td.@{ns}-table__cell {
+    border-bottom: @table-border;
+  }
+
+  th.@{ns}-table__cell.is-sortable {
+    cursor: pointer;
+  }
+
+  th.@{ns}-table__cell {
+    // overflow: hidden;
+    user-select: none;
+    background-color: @table-header-background-color;
+
+    > .cell {
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      vertical-align: middle;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+
+      &.highlight {
+        color: @color-primary;
+      }
+    }
+
+    &.required > div::before {
+      display: inline-block;
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff4d51;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  td.@{ns}-table__cell {
+    div {
+      box-sizing: border-box;
+    }
+
+    &.gutter {
+      width: 0;
+    }
+  }
+
+  .cell {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    line-height: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &.@{ns}-tooltip {
+      white-space: nowrap;
+      min-width: 50px;
+    }
+  }
+
+  // 拥有多级表头
+  &--group,
+  &--border {
+    border: @table-border;
+
+    // @include share-rule(border-pseudo) {
+    //   content: '';
+    //   position: absolute;
+    //   background-color: @table-border-color;
+    //   z-index: 1;
+    // }
+
+    // 表格右部伪 border
+    &::after {
+      // @include extend-rule(border-pseudo);
+      content: '';
+      position: absolute;
+      background-color: @table-border-color;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  // 表格底部伪 border，总是有的
+  &::before {
+    // @include extend-rule(border-pseudo);
+    content: '';
+    position: absolute;
+    background-color: @table-border-color;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+  }
+
+  // table--border
+  &--border {
+    border-right: none;
+    border-bottom: none;
+
+    &.@{ns}-loading-parent--relative {
+      border-color: transparent;
+    }
+
+    .@{ns}-table__cell {
+      border-right: @table-border;
+
+      &:first-child .cell {
+        padding-left: 10px;
+      }
+    }
+
+    th.@{ns}-table__cell.gutter:last-of-type {
+      border-bottom: @table-border;
+      border-bottom-width: 1px;
+    }
+
+    & th.@{ns}-table__cell {
+      border-bottom: @table-border;
+    }
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &__fixed,
+  &__fixed-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: @table-fixed-box-shadow; // hezulong
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: @border-color-lighter;
+      z-index: 4;
+    }
+  }
+
+  // &__fixed .@{ns}-table-fixed-column--left.is-last-column,
+  // &__fixed-right .@{ns}-table-fixed-column--right.is-first-column {
+  //   &::before {
+  //     content: '';
+  //     position: absolute;
+  //     top: 0px;
+  //     width: 10px;
+  //     bottom: -1px;
+  //     overflow-x: hidden;
+  //     overflow-y: hidden;
+  //     box-shadow: none;
+  //     touch-action: none;
+  //     pointer-events: none;
+  //   }
+  // }
+
+  // &__fixed {
+  //   .@{ns}-table-fixed-column--left.is-last-column {
+  //     z-index: 1;
+  //     &::before {
+  //       right: -10px;
+  //       box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, .15);
+  //     }
+  //   }
+  // }
+
+  &__fixed-right-patch {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    background-color: @color-white;
+    border-bottom: @table-border;
+  }
+
+  &__fixed-right {
+    top: 0;
+    left: auto;
+    right: 0;
+
+    .@{ns}-table__fixed-header-wrapper,
+    .@{ns}-table__fixed-body-wrapper,
+    .@{ns}-table__fixed-footer-wrapper {
+      left: auto;
+      right: 0;
+    }
+
+    // .@{ns}-table-fixed-column--right.is-first-column {
+    //   z-index: 1;
+    //   &::before {
+    //     left: -10px;
+    //     box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, .15);
+    //   }
+    // }
+  }
+
+  &__fixed-header-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+  }
+
+  &__fixed-footer-wrapper {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+
+    & tbody td.@{ns}-table__cell {
+      border-top: @table-border;
+      background-color: @table-row-hover-background-color;
+      color: @table-font-color;
+    }
+  }
+
+  &__fixed-body-wrapper {
+    position: absolute;
+    left: 0;
+    top: 37px;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  
+
+  &__header-wrapper,
+  &__body-wrapper,
+  &__footer-wrapper {
+    width: 100%;
+  }
+
+  &__footer-wrapper {
+    margin-top: -1px;
+    td.@{ns}-table__cell {
+      border-top: @table-border;
+    }
+  }
+
+  &__header,
+  &__body,
+  &__footer {
+    table-layout: fixed;
+    border-collapse: separate;
+  }
+
+  &__header-wrapper,
+  &__footer-wrapper {
+    overflow: hidden;
+
+    & tbody td.@{ns}-table__cell {
+      background-color: @table-row-hover-background-color;
+      color: @table-font-color;
+    }
+  }
+
+  &__body-wrapper {
+    overflow: hidden;
+    position: relative;
+
+    // &.is-scrolling-none {
+    //   ~ .@{ns}-table__fixed .@{ns}-table-fixed-column--left.is-last-column::before {
+    //     box-shadow: none;
+    //   }
+
+    //   ~ .@{ns}-table__fixed-right .@{ns}-table-fixed-column--right.is-first-column::before {
+    //     box-shadow: none;
+    //   }
+    // }
+
+    // &.is-scrolling-left {
+    //   ~ .@{ns}-table__fixed .@{ns}-table-fixed-column--left.is-last-column::before {
+    //     box-shadow: none;
+    //   }
+    // }
+
+    // &.is-scrolling-right {
+    //   ~ .@{ns}-table__fixed-right .@{ns}-table-fixed-column--right.is-first-column::before {
+    //     box-shadow: none;
+    //   }
+    // }
+
+    &.is-scrolling-none {
+      ~ .@{ns}-table__fixed,
+      ~ .@{ns}-table__fixed-right {
+        box-shadow: none;
+      }
+    }
+
+    &.is-scrolling-left {
+      ~ .@{ns}-table__fixed {
+        box-shadow: none;
+      }
+    }
+
+    &.is-scrolling-right {
+      ~ .@{ns}-table__fixed-right {
+        box-shadow: none;
+      }
+    }
+
+    > .el-scrollbar > .el-scrollbar__bar {
+      z-index: 4;
+    }
+
+    .@{ns}-table--border {
+      &.is-scrolling-right {
+        ~ .@{ns}-table__fixed-right {
+          border-left: @table-border;
+        }
+      }
+
+      &.is-scrolling-left {
+        ~ .@{ns}-table__fixed {
+          border-right: @table-border;
+        }
+      }
+    }
+  }
+
+  .caret-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    height: 34px;
+    width: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    overflow: initial;
+    position: relative;
+  }
+
+  .sort-caret {
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    position: absolute;
+    left: 7px;
+
+    &.ascending {
+      border-bottom-color: @color-text-placeholder;
+      top: 5px;
+    }
+
+    &.descending {
+      border-top-color: @color-text-placeholder;
+      bottom: 7px;
+    }
+  }
+
+  .ascending .sort-caret.ascending {
+    border-bottom-color: @color-primary;
+  }
+
+  .descending .sort-caret.descending {
+    border-top-color: @color-primary;
+  }
+
+  .hidden-columns {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &--striped {
+    & .@{ns}-table__body {
+      & tr.@{ns}-table__row--striped {
+        td.@{ns}-table__cell {
+          background: #FAFAFA;
+        }
+
+        &.current-row td.@{ns}-table__cell {
+          background-color: @table-current-row-background-color;
+        }
+      }
+    }
+  }
+
+  &__body {
+    tr.hover-row {
+      &, &.@{ns}-table__row--striped {
+        &, &.current-row {
+          > td.@{ns}-table__cell {
+            background-color: @table-row-hover-background-color;
+          }
+        }
+      }
+    }
+
+    tr.current-row > td.@{ns}-table__cell {
+      background-color: @table-current-row-background-color;
+    }
+  }
+
+  &__column-resize-proxy {
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: @table-border;
+    z-index: 10;
+  }
+
+  &__column-filter-trigger {
+    display: inline-block;
+    line-height: 34px;
+    cursor: pointer;
+
+    & i {
+      color: @color-info;
+      font-size: 12px;
+      transform: scale(.75);
+    }
+  }
+
+  &--enable-row-transition {
+    .@{ns}-table__body td.@{ns}-table__cell {
+      transition: background-color .25s ease;
+    }
+  }
+
+  &--enable-row-hover {
+    .@{ns}-table__body tr:hover > td.@{ns}-table__cell {
+      background-color: @table-row-hover-background-color;
+    }
+  }
+
+  &--fluid-height {
+    .@{ns}-table__fixed,
+    .@{ns}-table__fixed-right {
+      bottom: 0;
+      overflow: hidden;
+    }
+  }
+
+  [class*=~'@{ns}-table__row--level'] {
+    .@{ns}-table__expand-icon {
+      display: inline-block;
+      width: 20px;
+      line-height: 20px;
+      height: 20px;
+      text-align: center;
+      margin-right: 3px;
+    }
+  }
+}

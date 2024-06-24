@@ -1,0 +1,201 @@
+// @import "mixins/mixins";
+// @import "mixins/utils";
+// @import "common/var";
+
+.@{ns}-form {
+  &--label-left {
+    & .@{ns}-form-item__label {
+      // text-align: left;
+      justify-content: flex-start;
+    }
+  }
+  &--label-top {
+    & .@{ns}-form-item {
+      display: block;
+    }
+
+    & .@{ns}-form-item__label {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0 0 10px 0;
+    }
+  }
+  &--inline {
+    & .@{ns}-form-item {
+      // display: inline-block;
+      // margin-right: 10px;
+      // vertical-align: top;
+      display: inline-flex;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    &.@{ns}-form--label-top {
+      display: flex;
+      flex-wrap: wrap;
+
+      .@{ns}-form-item {
+        display: block;
+      }
+    }
+    // & .@{ns}-form-item__label {
+    //   float: none;
+    //   display: inline-block;
+    // }
+    // & .@{ns}-form-item__content {
+    //   display: inline-block;
+    //   vertical-align: top;
+    // }
+    // &.@{ns}-form--label-top .@{ns}-form-item__content {
+    //   display: block;
+    // }
+  }
+}
+
+.@{ns}-form-item {
+  display: flex;
+  margin-bottom: @form-item-margin-bottom;
+  // @include utils-clearfix;
+
+  & .@{ns}-form-item {
+    margin-bottom: 0;
+  }
+
+  & .@{ns}-input__validateIcon {
+    display: none;
+  }
+
+  &__label-wrap {
+    display: flex;
+    // float: left;
+    // .@{ns}-form-item__label {
+    //   display: inline-block;
+    //   float: none;
+    // }
+  }
+
+  &__label {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    // text-align: right;
+    // vertical-align: middle;
+    // float: left;
+    font-size: @form-label-font-size;
+    color: @color-text-regular;
+    height: @form-item-height;
+    line-height: @form-item-height;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+  }
+
+  &__content {
+    flex: 1;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    min-height: @form-item-height;
+    
+    // line-height: @form-item-height;
+
+    position: relative;
+    font-size: @form-label-font-size;
+    min-width: 0;
+    // @include utils-clearfix;
+
+    .@{ns}-input-group {
+      vertical-align: top;
+    }
+  }
+
+  &__error {
+    color: @color-danger;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: @form-item-error-padding-top;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    .@{ns}-form-item--inline {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
+  &.is-required {
+    &.@{ns}-form-item:not(.is-no-asterisk) {
+      & > .@{ns}-form-item__label::before,
+      & .@{ns}-form-item__label-wrap > .@{ns}-form-item__label::before {
+        content: '*';
+        color: @color-danger;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &.is-error {
+    & .@{ns}-input__inner,
+    & .@{ns}-textarea__inner {
+      &, &:focus {
+        border-color: @color-danger;
+      }
+    }
+    & .@{ns}-input-group__append,
+    & .@{ns}-input-group__prepend {
+      & .@{ns}-input__inner {
+        border-color: transparent;
+      }
+    }
+    .@{ns}-input__validateIcon {
+      color: @color-danger;
+    }
+  }
+
+  &--feedback {
+    .@{ns}-input__validateIcon {
+      display: inline-block;
+    }
+  }
+
+  // Size
+  .loopSize(@index) when (@index =< length(@sizes)) {
+    @size: extract(@sizes, @index);
+
+    @height-prop: ~'input-@{size}-height';
+    @height: @@height-prop;
+    @font-size-prop: ~'form-label-@{size}-font-size';
+    @font-size: @@font-size-prop;
+    @margin-bottom-prop: ~'form-item-@{size}-margin-bottom';
+    @margin-bottom: @@margin-bottom-prop;
+
+    &--@{size} {
+      margin-bottom: @margin-bottom;
+
+      .@{ns}-form-item__label {
+        font-size: @font-size;
+        height: @height;
+        line-height: @height;
+        padding-right: 0.5em;
+      }
+
+      .@{ns}-form-item__content {
+        min-height: @height;
+      }
+
+      .@{ns}-form-item__error {
+        padding-top: 2px;
+      }
+    }
+    .loopSize(@index + 1);
+  }
+  .loopSize(1);
+}

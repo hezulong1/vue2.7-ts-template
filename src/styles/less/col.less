@@ -1,0 +1,17 @@
+@import (reference) "mixins/_col.less";
+
+[class*=~'@{ns}-col-'] {
+  box-sizing: border-box;
+
+  &.is-guttered {
+    display: block;
+    min-height: 1px;
+  }
+}
+
+.col-size();
+.col-size(xs);
+.col-size(sm);
+.col-size(md);
+.col-size(lg);
+.col-size(xl);

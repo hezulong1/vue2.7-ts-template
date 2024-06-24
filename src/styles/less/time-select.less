@@ -1,0 +1,75 @@
+// @import "common/var";
+// @import "./date-picker/picker.scss";
+// @import "./date-picker/date-picker.scss";
+// @import "./scrollbar.scss";
+// @import "./popper";
+
+.time-select {
+  margin: 5px 0;
+  min-width: 0;
+}
+
+.time-select .@{ns}-picker-panel__content {
+  // max-height: 200px;
+  max-height: 272px; // 32 * 8 + @select-dropdown-padding * 2
+  // max-height: @select-dropdown-max-height;
+  margin: 0;
+
+  .@{ns}-scrollbar__view {
+    list-style: none;
+    padding: @select-dropdown-padding;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+.time-select-item {
+  // padding: 8px 10px;
+  // font-size: 14px;
+  // line-height: 20px;
+
+  font-size: @select-option-font-size;
+  padding: @select-option-padding;
+  position: relative;
+  color: @select-option-color;
+  height: @select-option-height;
+  line-height: @select-option-height;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  .util-elip();
+
+  &.disabled {
+    color: @select-option-disabled-color;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: @color-white;
+    }
+  }
+
+  &:hover {
+    background-color: @select-option-hover-background-color;
+  }
+
+  &.selected:not(.disabled) {
+    color: @select-option-selected-font-color;
+    font-weight: bold;
+  }
+}
+
+// .time-select-item.selected:not(.disabled) {
+//   color: @color-primary;
+//   font-weight: bold;
+// }
+
+// .time-select-item.disabled {
+//   color: @datepicker-border-color;
+//   cursor: not-allowed;
+// }
+
+// .time-select-item:hover {
+//   background-color: @fill-light;
+//   font-weight: bold;
+//   cursor: pointer;
+// }

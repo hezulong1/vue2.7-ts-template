@@ -1,0 +1,66 @@
+// @import "mixins/mixins";
+// @import "common/var";
+
+.@{ns}-rate {
+  display: inline-flex;
+  align-items: center;
+  height: @rate-height;
+  // line-height: 1;
+  vertical-align: middle;
+
+  &:focus, &:active {
+    outline: none;
+  }
+
+  &__item {
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+    vertical-align: middle;
+    line-height: normal;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    font-size: @rate-icon-size;
+    margin-right: @rate-icon-margin;
+    color: @rate-icon-color;
+    transition: .3s;
+
+    &.hover {
+      transform: scale(1.15);
+    }
+
+    .path2 {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__decimal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__text {
+    font-size: @rate-font-size;
+    vertical-align: middle;
+  }
+
+  .loopSize(@index) when (@index =< length(@sizes)) {
+    @size: extract(@sizes, @index);
+    @height-prop: ~'rate-@{size}-height';
+    @height: @@height-prop;
+
+    &--@{size} {
+      height: @height;
+    }
+    .loopSize(@index + 1);
+  }
+  .loopSize(1);
+}

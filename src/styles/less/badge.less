@@ -1,0 +1,58 @@
+@import "mixins/mixins";
+@import "common/var";
+
+.@{ns}-badge {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+
+  &__content {
+    background-color: @badge-background-color;
+    border-radius: @badge-radius;
+    color: @color-white;
+
+    .util-box-center(inline-flex);
+    
+    // display: inline-block;
+    font-size: @badge-font-size;
+    height: @badge-size;
+    // line-height: @badge-size;
+    padding: 0 @badge-padding;
+    text-align: center;
+    white-space: nowrap;
+    border: @border-width-base solid @color-white;
+
+    &.is-fixed {
+      position: absolute;
+      top: 0;
+      right: calc(~'3px + @{badge-size} / 2');
+      transform: translateY(-50%) translateX(100%);
+
+      &.is-dot {
+        right: 5px;
+      }
+    }
+
+    &.is-dot {
+      height: 0.5rem;
+      width: 0.5rem;
+      padding: 0;
+      right: 0;
+      border-radius: 50%;
+    }
+
+    // Theme
+    .loopTheme(@index) when (@index =< length(@types)) {
+      @type: extract(@types, @index);
+      @color-prop: ~'color-@{type}';
+      @color: @@color-prop;
+
+      &--@{type} {
+        background-color: @color;
+      }
+
+      .loopTheme(@index + 1);
+    }
+    .loopTheme(1);
+  }
+}

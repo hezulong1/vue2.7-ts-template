@@ -1,0 +1,118 @@
+@import "common/index.less";
+
+// Base
+@import (once, optional) "scrollbar.less";
+@import (once, optional) "input.less";
+@import (once, optional) "tag.less";
+@import (once, optional) "option.less";
+@import (once, optional) "option-group.less";
+@import "select-dropdown.less";
+
+.@{ns}-select {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+
+  > .el-input {
+    display: flex;
+  }
+
+  &:hover .@{ns}-input__inner {
+    border-color: @input-hover-border;
+  }
+
+  .@{ns}-input__inner {
+    cursor: pointer;
+
+    &:focus {
+      border-color: @select-input-focus-border-color;
+    }
+  }
+
+  .@{ns}-input {
+    & .@{ns}-select__caret {
+      color: @select-input-color;
+      transition: transform .3s;
+      transform: rotateZ(180deg);
+      cursor: pointer;
+
+      &.is-reverse {
+        transform: rotateZ(0deg);
+      }
+
+      &.@{ns}-icon-circle-close:hover {
+        color: @select-close-hover-color;
+      }
+    }
+
+    &.is-disabled {
+      & .@{ns}-input__inner {
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: @select-disabled-border;
+        }
+      }
+    }
+
+    &.is-focus .el-input__inner {
+      border-color: @select-input-focus-border-color;
+    }
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    padding: 0;
+    margin-left: calc(~'@{input-padding-horizontal} - @{border-width-base}');
+    color: @select-multiple-input-color;
+    font-size: @select-font-size;
+    appearance: none;
+    height: @component-size-small;
+    background-color: transparent;
+
+    &.is-small {
+      margin-left: calc(~'@{input-small-padding-horizontal} - @{border-width-base}');
+    }
+
+    &.is-mini {
+      height: 1rem;
+      margin-left: calc(~'@{input-mini-padding-horizontal} - @{border-width-base}');
+    }
+  }
+
+  &__tags {
+    position: absolute;
+    line-height: normal;
+    white-space: normal;
+    z-index: @index-normal;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    > span {
+      display: contents;
+    }
+  }
+
+  &__tags-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: inherit;
+  }
+
+  .@{ns}-tag {
+    border-color: transparent;
+    margin: 2px 0 2px 6px;
+    background-color: @fill-base;
+    max-width: 100%;
+  }
+
+  // Size
+  &--mini .@{ns}-tag--mini {
+    height: 1rem;
+  }
+}

@@ -1,0 +1,103 @@
+.@{ns}-link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  border-radius: @button-border-radius;
+  font-size: @link-font-size;
+  font-weight: @link-font-weight;
+  outline: none;
+  cursor: pointer;
+  
+  &:focus-visible {
+    outline: 2px solid @color-primary-light-5;
+    outline-offset: 1px;
+  }
+
+  > span {
+    font-size: inherit;
+  }
+
+  & + & {
+    margin-left: 0.5rem;
+  }
+
+  &.is-underline {
+    &:hover:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid @link-default-active-color
+    }
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+  } 
+
+  & [class*="el-icon-"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  &--default  {
+    color: @link-default-font-color;
+
+    &:hover {
+      color: @link-default-active-color
+    }
+    
+    &:after {
+      border-color: @link-default-active-color
+    }
+
+    &.is-disabled {
+      color: @link-disabled-font-color;
+    }
+  }
+
+  // Theme
+  .loop(@index) when (@index =< length(@types)) {
+    @type: extract(@types, @index);
+    @color-prop: ~'color-@{type}';
+    @color: @@color-prop;
+
+    &--@{type} {
+      color: @color;
+
+      &:focus-visible {
+        outline-color: mix(@color-white, @color, 50%);
+      }
+
+      &:hover {
+        color: mix(@color, @color-white, 80%);
+      }
+
+      &::after {
+        border-color: @color;
+      }
+
+      &.is-disabled {
+        color: mix(@color, @color-white, 50%);
+      }
+
+      &.is-underline {
+        &:hover:after {
+          border-color: @color;
+        }
+      }
+    }
+
+    .loop(@index + 1);
+  }
+
+  .loop(1);  
+}

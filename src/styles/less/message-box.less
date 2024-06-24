@@ -1,0 +1,237 @@
+// @import "mixins/mixins";
+// @import "common/var";
+// @import "common/popup";
+// @import "button";
+// @import "input";
+
+.@{ns}-message-box {
+  display: inline-block;
+  max-width: @messagebox-width;
+  width: 100%;
+  padding-bottom: 12px;
+  vertical-align: middle;
+  background-color: @color-white;
+  border-radius: @border-radius-base;
+  border: 1px solid @border-color-lighter;
+  font-size: @messagebox-font-size;
+  box-shadow: @box-shadow-light;
+  text-align: left;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 16px;
+    overflow: auto;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &__header {
+    position: relative;
+    padding: @messagebox-padding-primary;
+    padding-bottom: 8px;
+  }
+
+  &__title {
+    padding-left: 0;
+    margin-bottom: 0;
+    font-size: @messagebox-font-size;
+    line-height: 1;
+    color: @messagebox-title-color;
+
+    > span {
+      font-size: inherit;
+    }
+  }
+
+  &__headerbtn {
+    position: absolute;
+    top: @messagebox-padding-primary;
+    right: @messagebox-padding-primary;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: @message-close-size;
+    cursor: pointer;
+
+    .@{ns}-message-box__close {
+      color: @color-info;
+    }
+
+    &:focus, &:hover {
+      .@{ns}-message-box__close {
+        color: @color-primary;
+      }
+    }
+
+  }
+
+  &__content {
+    padding: 8px @messagebox-padding-primary;
+    color: @messagebox-content-color;
+    font-size: @messagebox-content-font-size;
+  }
+  
+  &__container {
+    position: relative;
+    font-size: inherit;
+  }
+
+  &__input {
+    padding-top: 8px;
+
+    & input.invalid {
+      border-color: @color-danger;
+      &:focus {
+        border-color: @color-danger;
+      }
+    }
+  }
+
+  &__status {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px !important;
+
+    &::before {
+      // 防止图标切割
+      padding-left: 1px;
+    }
+
+    + .@{ns}-message-box__message {
+      padding-left: 36px;
+      padding-right: 12px;
+    }
+
+    &.@{ns}-icon-success {
+      color: @messagebox-success-color;
+    }
+
+    &.@{ns}-icon-info {
+      color: @messagebox-info-color;
+    }
+
+    &.@{ns}-icon-warning {
+      color: @messagebox-warning-color;
+    }
+
+    &.@{ns}-icon-error {
+      color: @messagebox-danger-color;
+    }
+  }
+
+  &__message {
+    margin: 0;
+    font-size: inherit;
+
+    & p {
+      margin: 0;
+      line-height: 24px;
+    }
+  }
+
+  &__errormsg {
+    color: @color-danger;
+    font-size: @messagebox-error-font-size;
+    min-height: 18px;
+    margin-top: 2px;
+  }
+
+  &__btns {
+    padding: 4px @messagebox-padding-primary 0;
+    text-align: right;
+
+    // & button:nth-child(2) {
+    //   margin-left: 10px;
+    // }
+  }
+
+  &__btns-reverse {
+    flex-direction: row-reverse;
+  }
+
+  // centerAlign 布局
+  &--center {
+    padding-bottom: 30px;
+
+    .@{ns}-message-box__header {
+      padding-top: 30px;
+    }
+
+    .@{ns}-message-box__title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .@{ns}-message-box__status {
+      position: relative;
+      top: auto;
+      padding-right: 5px;
+      text-align: center;
+      transform: translateY(-1px);
+    }
+
+    .@{ns}-message-box__message {
+      margin-left: 0;
+    }
+
+    .@{ns}-message-box__btns,
+    .@{ns}-message-box__content {
+      text-align: center;
+    }
+
+    .@{ns}-message-box__content {
+      @padding-horizontal: @messagebox-padding-primary + 12px;
+
+      padding-left: @padding-horizontal;
+      padding-right: @padding-horizontal;
+    }
+  }
+}
+
+.msgbox-fade-enter-active {
+  animation: msgbox-fade-in .3s;
+}
+
+.msgbox-fade-leave-active {
+  animation: msgbox-fade-out .3s;
+}
+
+@keyframes msgbox-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes msgbox-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}

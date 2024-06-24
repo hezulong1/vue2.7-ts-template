@@ -1,0 +1,199 @@
+@import "common/index.less";
+
+@import (once, optional) "input.less";
+@import (once, optional) "tag.less";
+@import (once, optional) "popper.less";
+@import "cascader-panel.less";
+
+.@{ns}-cascader {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  outline: none;
+  vertical-align: middle;
+
+  &:not(.is-disabled):hover .@{ns}-input__inner {
+    border-color: @input-hover-border;
+  }
+
+  .@{ns}-input {
+    display: flex;
+    cursor: pointer;
+
+    .@{ns}-input__inner {
+      text-overflow: ellipsis;
+      cursor: pointer;
+
+      &::selection {
+        outline: none;
+      }
+
+      &:focus {
+        border-color: @input-focus-border;
+      }
+    }
+
+    .@{ns}-icon-arrow-down {
+      transition: transform .3s;
+      // font-size: 14px;
+
+      &.is-reverse {
+        transform: rotateZ(180deg);
+      }
+    }
+
+    .@{ns}-icon-circle-close:hover {
+      color: @input-clear-hover-color;
+    }
+
+    &.is-focus .@{ns}-input__inner{
+      border-color: @input-focus-border;
+    }
+  }
+
+
+  // @include m(small) {
+  //   font-size: $--input-small-font-size;
+  //   line-height: $--input-small-height;
+  // }
+
+  // @include m(mini) {
+  //   font-size: $--input-mini-font-size;
+  //   line-height: $--input-mini-height;
+  // }
+
+  &.is-disabled {
+    .@{ns}-cascader__label {
+      z-index: @index-normal + 1;
+      color: @disabled-color-base;
+    }
+  }
+
+  &__dropdown {
+    margin: @select-dropdown-margin;
+    font-size: @cascader-menu-font-size;
+    background: @cascader-menu-fill;
+    border: @cascader-menu-border;
+    border-radius: @cascader-menu-radius;
+    box-shadow: @cascader-menu-shadow;
+  }
+
+  &__tags {
+    position: absolute;
+    // left: 0;
+    // right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: normal;
+    text-align: left;
+    box-sizing: border-box;
+
+    .@{ns}-tag {
+      // display: inline-flex;
+      // align-items: center;
+      max-width: 100%;
+      margin: 2px 0 2px 6px;
+      text-overflow: ellipsis;
+      background: @fill-base;
+
+      &:not(.is-hit) {
+        border-color: transparent;
+      }
+
+      > span {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .@{ns}-icon-close {
+        flex: none;
+        background-color: @color-text-placeholder;
+        color: @color-white;
+
+        &:hover {
+          background-color: @color-text-secondary;
+        }
+      }
+    }
+  }
+
+  &__suggestion-panel {
+    border-radius: @cascader-menu-radius;
+  }
+
+  &__suggestion-list {
+    max-height: 204px;
+    margin: 0;
+    padding: @select-dropdown-padding;
+    font-size: @cascader-menu-font-size;
+    color: @cascader-menu-font-color;
+    text-align: center;
+  }
+
+  &__suggestion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: @select-option-height;
+    padding: @select-option-padding;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+
+    &:hover, &:focus {
+      background: @cascader-node-background-hover;
+    }
+
+    &.is-checked {
+      color: @cascader-menu-selected-font-color;
+      font-weight: bold;
+    }
+
+    > span {
+      margin-right: 10px;
+    }
+  }
+
+  &__empty-text {
+    margin: 10px 0;
+    color: @cascader-color-empty;
+  }
+
+  &__search-input {
+    flex: 1;
+    height: @component-size-small;
+    // min-width: 60px;
+    // margin: 2px 0 2px 15px;
+    margin-left: calc(~'@{input-padding-horizontal} - @{border-width-base}');;
+    padding: 0;
+    font-size: @select-font-size;
+    color: @cascader-menu-font-color;
+    border: none;
+    outline: none;
+    appearance: none;
+    background-color: transparent;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: @color-text-placeholder;
+    }
+  }
+
+  // Size
+  &--mini .@{ns}-tag--mini {
+    height: 1rem;
+  }
+
+  &--small &__search-input {
+    margin-left: calc(~'@{input-small-padding-horizontal} - @{border-width-base}');
+  }
+
+  &--mini &__search-input {
+    height: 1rem;
+    margin-left: calc(~'@{input-mini-padding-horizontal} - @{border-width-base}');
+  }
+}

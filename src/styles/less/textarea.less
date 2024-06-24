@@ -1,0 +1,72 @@
+.@{ns}-textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: @font-size-base;
+
+  &__inner {
+    display: block;
+    resize: vertical;
+    padding: @input-textarea-padding-vertical calc(~'@{input-padding-horizontal} - @{border-width-base}');;
+    line-height: 1.5;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: inherit;
+    color: @input-font-color;
+    background-color: @input-background-color;
+    background-image: none;
+    border: @input-border;
+    border-radius: @input-border-radius;
+    transition: @border-transition-base;
+
+    &::placeholder {
+      color: @input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: @input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: @input-focus-border;
+    }
+
+    .scrollbar();
+  }
+
+  & .@{ns}-input__count {
+    color: @color-info;
+    background: @color-white;
+    position: absolute;
+    font-size: 12px;
+    padding: 0px 2px;
+    border-radius: 3px;
+    bottom: @input-textarea-padding-vertical;
+    right: 8px;
+  }
+
+  &.is-disabled {
+    .@{ns}-textarea__inner {
+      background-color: @input-disabled-fill;
+      border-color: @input-disabled-border;
+      color: @input-disabled-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: @input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  &.is-exceed {
+    .@{ns}-textarea__inner {
+      border-color: @color-danger;
+    }
+
+    .@{ns}-input__count {
+      color: @color-danger;
+    }
+  }
+}

@@ -1,0 +1,880 @@
+// Global
+@ns: el;
+@types: primary, pretty, success, warning, danger, special, info;
+@sizes: small, mini;
+
+@component-size: 2.125rem; // 34px
+@component-size-large: 2.5rem; // 40px
+@component-size-small: 1.75rem; // 28px
+@component-size-mini: 1.375rem; // 22px
+
+// Transition
+@all-transition: all 300ms cubic-bezier(.645,.045,.355,1);
+@fade-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+@fade-linear-transition: opacity 200ms linear;
+@md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+@border-transition-base: border-color 300ms cubic-bezier(.645,.045,.355,1);
+@color-transition-base: color 300ms cubic-bezier(.645,.045,.355,1);
+@fill-transition-base: background-color 300ms cubic-bezier(.645,.045,.355,1); // New
+
+// Color
+@color-white: #FFFFFF;
+@color-black: #000000;
+@color-blue: #409EFF;
+@color-cyan: #5BC0DE; // New
+@color-green: #67C23A;
+@color-orange: #E6A23C;
+@color-red: #F56C6C;
+@color-purple: #AD86DF; // New
+@color-gray: #909399;
+
+@color-primary: @color-blue;
+@color-primary-light-1: mix(@color-white, @color-primary, 10%); /* 53a8ff */
+@color-primary-light-2: mix(@color-white, @color-primary, 20%); /* 66b1ff */
+@color-primary-light-3: mix(@color-white, @color-primary, 30%); /* 79bbff */
+@color-primary-light-4: mix(@color-white, @color-primary, 40%); /* 8cc5ff */
+@color-primary-light-5: mix(@color-white, @color-primary, 50%); /* a0cfff */
+@color-primary-light-6: mix(@color-white, @color-primary, 60%); /* b3d8ff */
+@color-primary-light-7: mix(@color-white, @color-primary, 70%); /* c6e2ff */
+@color-primary-light-8: mix(@color-white, @color-primary, 80%); /* d9ecff */
+@color-primary-light-9: mix(@color-white, @color-primary, 90%); /* ecf5ff */
+
+@color-pretty: @color-cyan;
+@color-success: @color-green;
+@color-warning: @color-orange;
+@color-danger: @color-red;
+@color-special: @color-purple;
+@color-info: @color-gray;
+
+@color-pretty-light: mix(@color-white, @color-pretty, 80%);
+@color-success-light: mix(@color-white, @color-success, 80%);
+@color-warning-light: mix(@color-white, @color-warning, 80%);
+@color-danger-light: mix(@color-white, @color-danger, 80%);
+@color-spacial-light: mix(@color-white, @color-special, 80%);
+@color-info-light: mix(@color-white, @color-info, 80%);
+
+@color-pretty-lighter: mix(@color-white, @color-pretty, 90%);
+@color-success-lighter: mix(@color-white, @color-success, 90%);
+@color-warning-lighter: mix(@color-white, @color-warning, 90%);
+@color-danger-lighter: mix(@color-white, @color-danger, 90%);
+@color-spacial-light: mix(@color-white, @color-special, 90%);
+@color-info-lighter: mix(@color-white, @color-info, 90%);
+
+// Font
+// @color-text-primary: #303133;
+@color-text-primary: #313A46;
+@color-text-regular: #606266;
+@color-text-secondary: #909399;
+// @color-text-placeholder: #C0C4CC;
+@color-text-placeholder: #A8ABB2; // New
+@color-text-disabled: #C0C4CC; // New
+
+// Border
+@border-color-base: #DCDFE6;
+@border-color-light: #E4E7ED;
+// @border-color-light: #E6E6E6;
+@border-color-lighter: #EBEEF5;
+@border-color-extra-light: #F2F6FC;
+@border-color-divider: #CDD0D1; // New
+
+// Background
+// @background-color-base: #F5F7FA;
+
+// Link
+@link-color: @color-primary-light-2;
+@link-hover-color: @color-primary;
+@link-bg-color: @color-primary-light-9; // New
+
+// Border
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-color-hover: @color-text-disabled;
+@border-base: @border-width-base @border-style-base @border-color-base;
+@border-radius-base: 4px;
+@border-radius-small: 2px;
+@border-radius-circle: 100%;
+@border-radius-zero: 0;
+
+// Box-shadow
+@box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+@box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12);
+@box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+// Fill
+@fill-base: #F0F2F5;
+@fill-light: #F5F7FA;
+@fill-lighter: #FAFAFA;
+@fill-blank: @color-white;
+
+// Typography
+@font-path: 'fonts';
+@font-display: 'auto';
+
+@font-size-extra-large: 1.25rem;
+@font-size-large: 1.125rem;
+@font-size-medium: 1rem;
+@font-size-base: 0.9375rem;
+@font-size-small: 0.875rem;
+@font-size-mini: 0.75rem;
+
+@font-weight-primary: 500;
+
+@font-line-height-large: 1.5rem;
+@font-line-height-base: 1.25rem;
+@font-line-height-small: 1rem;
+
+@font-color-disabled-base: #bbb;
+
+// Size
+@size-base: 16px;
+
+// ZIndex
+@index-normal: 1;
+@index-top: 1000;
+@index-popper: 2000;
+
+// Disable Base
+@disabled-fill-base: @fill-light;
+@disabled-color-base: @color-text-placeholder;
+@disabled-border-base: @border-color-light;
+
+// Icon
+@icon-color: #666;
+@icon-color-base: @color-info;
+
+// Input
+@input-font-size: @font-size-base;
+@input-font-color: @color-text-regular;
+
+@input-height: @component-size;
+
+@input-border: @border-base;
+// @input-border-color: @border-color-base;
+@input-border-radius: @border-radius-base;
+// @input-border-color-hover: @border-color-hover;
+
+@input-background-color: @color-white;
+// @input-fill-disabled: @disabled-fill-base;
+// @input-color-disabled: @font-color-disabled-base;
+@input-icon-color: @color-text-placeholder;
+@input-placeholder-color: @color-text-placeholder;
+// @input-max-width: 314px;
+@input-padding-horizontal: 0.8125rem; // New
+@input-textarea-padding-vertical: 0.25rem;
+
+@input-hover-border: @border-color-hover;
+@input-clear-hover-color: @color-text-secondary;
+
+@input-focus-border: @color-primary;
+@input-focus-fill: @color-white;
+
+@input-disabled-fill: @disabled-fill-base;
+@input-disabled-border: @disabled-border-base;
+@input-disabled-color: @disabled-color-base;
+@input-disabled-placeholder-color: @color-text-placeholder;
+
+@input-small-height: @component-size-small;
+@input-small-font-size: @font-size-small;
+@input-small-border-radius: @input-border-radius - 1; // New
+@input-small-padding-horizontal: 0.625rem; // New
+
+@input-mini-height: @component-size-mini;
+@input-mini-font-size: @font-size-mini;
+@input-mini-border-radius: @input-border-radius - 1; // New
+@input-mini-padding-horizontal: 0.4375rem; // New
+
+// Button
+@button-font-size: @font-size-base;
+@button-font-weight: @font-weight-primary;
+@button-border-radius: @border-radius-base;
+@button-padding-vertical: (@input-height - @button-font-size) / 2;
+@button-padding-horizontal: 1.0625rem;
+
+@button-small-font-size: @font-size-small;
+@button-small-border-radius: @border-radius-base - 1;
+@button-small-padding-vertical: (@input-small-height - @button-small-font-size) / 2;
+@button-small-padding-horizontal: (0.75 * 1.0625rem);
+
+@button-mini-font-size: @font-size-mini;
+@button-mini-border-radius: @border-radius-base - 1;
+@button-mini-padding-vertical: (@input-mini-height - @button-small-font-size) / 2;
+@button-mini-padding-horizontal: (0.5 * 1.0625rem);
+
+@button-default-font-color: @color-text-regular;
+@button-default-background-color: @color-white;
+@button-default-border-color: @border-color-base;
+
+@button-disabled-font-color: @color-text-disabled;
+@button-disabled-background-color: @color-white;
+@button-disabled-border-color: @border-color-lighter;
+
+@button-hover-tint-percent: 30%;
+@button-active-shade-percent: 10%;
+
+// Radio
+@radio-font-size: @font-size-base;
+@radio-font-weight: @font-weight-primary;
+@radio-font-color: @color-text-regular;
+@radio-input-height: 14px;
+@radio-input-width: 14px;
+@radio-input-border-radius: @border-radius-circle;
+@radio-input-background-color: @color-white;
+@radio-input-border: @border-base;
+@radio-input-border-color-hover: @color-primary;
+// @radio-input-offset-top: 0.0625rem;
+@radio-icon-color: @color-white;
+@radio-label-padding-horizontal: 0.5rem;
+
+@radio-checked-font-color: @color-primary;
+@radio-checked-input-border-color: @color-primary;
+@radio-checked-input-background-color: @color-white;
+@radio-checked-icon-color: @color-primary;
+
+@radio-disabled-input-border-color: @disabled-border-base;
+@radio-disabled-input-fill: @disabled-fill-base;
+@radio-disabled-icon-color: @disabled-fill-base;
+
+@radio-disabled-checked-input-border-color: @disabled-border-base;
+@radio-disabled-checked-input-fill: @disabled-fill-base;
+@radio-disabled-checked-icon-color: @color-text-placeholder;
+
+@radio-small-font-size: @font-size-small;
+@radio-small-input-height: 14px;
+@radio-small-input-width: 14px;
+// @radio-small-input-offset-top: 1px;
+@radio-small-label-padding-horizontal: 0.375rem;
+
+@radio-mini-font-size: @font-size-mini;
+@radio-mini-input-height: 12px;
+@radio-mini-input-width: 12px;
+// @radio-mini-input-offset-top: 0px;
+@radio-mini-label-padding-horizontal: 0.25rem;
+
+@radio-bordered-border-radius: @border-radius-base;
+@radio-bordered-padding-right: (@button-padding-horizontal - @radio-label-padding-horizontal);
+@radio-bordered-padding-left: (@button-padding-horizontal * 0.6);
+@radio-bordered-small-padding-right: (@button-small-padding-horizontal - @radio-small-label-padding-horizontal);
+@radio-bordered-small-padding-left: (@button-small-padding-horizontal * 0.625);
+@radio-bordered-small-border-radius: @border-radius-base - 1;
+@radio-bordered-mini-padding-right: (@button-mini-padding-horizontal - @radio-mini-label-padding-horizontal);
+@radio-bordered-mini-padding-left: (@button-mini-padding-horizontal * 0.75);
+@radio-bordered-mini-border-radius: @border-radius-base - 1;
+
+@radio-button-checked-background-color: @color-primary;
+@radio-button-checked-font-color: @color-white;
+@radio-button-checked-border-color: @color-primary;
+@radio-button-disabled-checked-fill: @border-color-extra-light;
+
+// Checkbox
+@checkbox-font-size: @font-size-base;
+@checkbox-font-weight: @font-weight-primary;
+@checkbox-font-color: @color-text-regular;
+@checkbox-input-height: 14px;
+@checkbox-input-width: 14px;
+@checkbox-input-border-radius: @border-radius-small;
+@checkbox-input-background-color: @color-white;
+@checkbox-input-border: @border-base;
+@checkbox-input-border-color-hover: @color-primary;
+// @checkbox-input-offset-top: 0.0625rem;
+@checkbox-label-padding-horizontal: 0.5rem;
+
+@checkbox-checked-font-color: @color-primary;
+@checkbox-checked-input-border-color: @color-primary;
+@checkbox-checked-input-background-color: @color-primary;
+@checkbox-checked-icon-color: @fill-blank;
+
+@checkbox-disabled-input-border-color: @disabled-border-base; // @border-color-base
+@checkbox-disabled-input-fill: @disabled-fill-base; // #edf2fc
+@checkbox-disabled-icon-color: @disabled-fill-base; // @color-text-placeholder
+
+@checkbox-disabled-checked-input-border-color: @disabled-border-base; // @border-color-base
+@checkbox-disabled-checked-input-fill: @disabled-fill-base; // @border-color-extra-light
+@checkbox-disabled-checked-icon-color: @color-text-placeholder; // @color-text-placeholder
+
+@checkbox-small-font-size: @font-size-small;
+@checkbox-small-input-height: 14px;
+@checkbox-small-input-width: 14px;
+// @checkbox-small-input-offset-top: 2px;
+@checkbox-small-label-padding-horizontal: 0.375rem;
+@checkbox-small-icon-width: 3px;
+@checkbox-small-icon-height: 7px;
+
+@checkbox-mini-font-size: @font-size-mini;
+@checkbox-mini-input-height: 12px;
+@checkbox-mini-input-width: 12px;
+// @checkbox-mini-input-offset-top: 0px;
+@checkbox-mini-label-padding-horizontal: 0.25rem;
+@checkbox-mini-icon-width: 2px;
+@checkbox-mini-icon-height: 6px;
+
+@checkbox-bordered-border-radius: @border-radius-base;
+@checkbox-bordered-padding-right: (@button-padding-horizontal - @checkbox-label-padding-horizontal);
+@checkbox-bordered-padding-left: (@button-padding-horizontal * 0.6);
+@checkbox-bordered-small-padding-right: (@button-small-padding-horizontal - @checkbox-small-label-padding-horizontal);
+@checkbox-bordered-small-padding-left: (@button-small-padding-horizontal * 0.625);
+@checkbox-bordered-small-border-radius: @border-radius-base - 1;
+@checkbox-bordered-mini-padding-right: (@button-mini-padding-horizontal - @checkbox-mini-label-padding-horizontal);
+@checkbox-bordered-mini-padding-left: (@button-mini-padding-horizontal * 0.75);
+@checkbox-bordered-mini-border-radius: @border-radius-base - 1;
+
+@checkbox-button-checked-background-color: @color-primary;
+@checkbox-button-checked-font-color: @color-white;
+@checkbox-button-checked-border-color: @color-primary;
+
+// Switch
+@switch-on-color: @color-primary;
+@switch-off-color: @border-color-base;
+
+@switch-font-size: @font-size-base;
+@switch-core-width: 40px;
+@switch-core-height: 20px;
+@switch-core-border-radius: 10px;
+@switch-button-size: 16px;
+@switch-content-padding: 8px;
+
+@switch-small-font-size: @font-size-small;
+@switch-core-small-width: 32px;
+@switch-core-small-height: 16px;
+@switch-core-small-border-radius: 8px;
+@switch-button-small-size: 12px;
+@switch-content-small-padding: 6px;
+
+@switch-mini-font-size: @font-size-mini;
+@switch-core-mini-width: 24px;
+@switch-core-mini-height: 12px;
+@switch-core-mini-border-radius: 6px;
+@switch-button-mini-size: 8px;
+@switch-content-mini-padding: 4px;
+
+// Tag
+@tag-font-size: @input-small-font-size;
+@tag-height: @input-small-height; // New
+@tag-border-radius: @border-radius-small;
+// @tag-padding: 0 10px;
+@tag-padding-horizontal: @input-small-padding-horizontal; // New
+@tag-close-size: 1rem;
+
+@tag-small-font-size: @input-mini-font-size; // New
+@tag-small-height: 1.5rem; // New
+@tag-small-padding-horizontal: @input-mini-padding-horizontal; // New
+@tag-small-close-size: @input-small-font-size;
+
+@tag-mini-font-size: @input-mini-font-size; // New
+@tag-mini-height: @input-mini-height;
+@tag-mini-padding-horizontal: @input-mini-padding-horizontal; // New
+@tag-mini-close-size: @input-small-font-size;
+
+// Select
+@select-font-size: @font-size-base;
+// @select-border-color-hover: @border-color-hover;
+@select-disabled-border: @disabled-border-base;
+@select-close-hover-color: @color-text-secondary;
+
+@select-input-color: @color-text-placeholder;
+// @select-multiple-input-color: #666;
+@select-multiple-input-color: @color-text-regular;
+@select-input-focus-border-color: @color-primary;
+@select-input-font-size: 14px;
+
+@select-option-font-size: 14px; // New
+@select-option-height: 32px;
+@select-option-padding: 0 @select-option-font-size; // New
+@select-option-color: @color-text-regular;
+@select-option-disabled-color: @color-text-placeholder;
+@select-option-disabled-background-color: @color-white;
+@select-option-hover-background-color: @fill-light;
+@select-option-selected-font-color: @color-primary;
+@select-option-selected-hover: @fill-light;
+
+@select-group-color: @color-info;
+@select-group-height: 30px;
+@select-group-font-size: 12px;
+
+@select-dropdown-max-height: 280px;
+@select-dropdown-margin: 5px 0; // New
+@select-dropdown-padding: 8px 0; // New
+@select-dropdown-border: 1px solid @border-color-light;
+@select-dropdown-border-radius: @border-radius-base; // New
+@select-dropdown-background-color: @color-white; // New
+@select-dropdown-shadow: @box-shadow-light;
+@select-dropdown-empty-color: @color-info;
+@select-dropdown-empty-padding: 12px 0;
+
+// Cascader
+@cascader-height: 200px;
+@cascader-menu-min-width: 180px; // New
+@cascader-menu-height: @select-option-height * 6.5; // New
+@cascader-menu-font-size: @select-option-font-size;
+@cascader-menu-font-color: @color-text-regular;
+@cascader-menu-selected-font-color: @color-primary;
+@cascader-menu-fill: @fill-blank;
+
+@cascader-menu-radius: @border-radius-base;
+@cascader-menu-border: 1px solid @border-color-light;
+@cascader-menu-shadow: @box-shadow-light;
+@cascader-node-background-hover: @fill-light;
+@cascader-node-color-disabled:@color-text-placeholder;
+@cascader-color-empty:@color-text-placeholder;
+// @cascader-tag-background: @fill-base;
+
+// DatePicker
+@datepicker-font-color: @color-text-regular;
+@datepicker-off-font-color: @color-text-placeholder;
+@datepicker-header-font-color: @color-text-regular;
+@datepicker-icon-color: @color-text-primary;
+@datepicker-border-color: @disabled-border-base;
+@datepicker-inner-border-color: #e4e4e4;
+@datepicker-inrange-background-color: @border-color-extra-light;
+@datepicker-inrange-hover-background-color: @border-color-extra-light;
+@datepicker-active-color: @color-primary;
+@datepicker-hover-font-color: @color-primary;
+@datepicker-cell-hover-color: @color-white;
+
+// Slider
+@slider-main-background-color: @color-primary;
+@slider-runway-background-color: @border-color-light;
+// @slider-button-hover-color: mix(@color-primary, black, 97%);
+@slider-stop-background-color: @color-white;
+@slider-disable-color: @color-text-placeholder;
+// @slider-margin: 16px 0;
+@slider-border-radius: 3px;
+@slider-height: 6px;
+@slider-button-size: 16px;
+@slider-button-wrapper-size: 36px;
+@slider-button-wrapper-offset: -15px;
+
+// Upload
+@upload-border-color: @border-color-divider;
+@upload-dragger-padding-horizontal: 10px;
+@upload-dragger-padding-vertical: 40px;
+@upload-picture-card-size: 148px;
+
+// Rate
+@rate-height: @input-height;
+@rate-font-size: @font-size-base;
+@rate-icon-size: @font-size-large;
+@rate-icon-margin: 0.25rem;
+@rate-icon-color: @color-text-placeholder;
+@rate-small-height: @input-small-height;
+@rate-mini-height: @input-mini-height;
+
+// ColorPicker
+@colorpicker-gap: 6px;
+@colorpicker-size: @input-height;
+@colorpicker-border-color: @border-color-base;
+@colorpicker-hover-border-color: @color-text-disabled;
+
+@colorpicker-small-size: @input-small-height;
+@colorpicker-mini-size: @input-mini-height;
+
+// Transfer
+@transfer-gap: 15px;
+@transfer-border-color: @border-color-lighter;
+@transfer-border-radius: @border-radius-base;
+@transfer-panel-width: 200px;
+@transfer-panel-header-height: 40px;
+@transfer-panel-header-background-color: @fill-light;
+@transfer-panel-footer-height: 40px;
+@transfer-panel-body-height: 246px;
+// @transfer-item-height: 30px;
+@transfer-filter-height: 32px;
+
+// Form
+@form-label-font-size: @font-size-base;
+@form-item-margin-bottom: 18px;
+@form-item-height: @input-height;
+@form-item-error-padding-top: 2px;
+
+@form-label-small-font-size: @font-size-small;
+@form-item-small-margin-bottom: 16px;
+@form-item-small-height: @input-small-height;
+
+@form-label-mini-font-size: @font-size-mini;
+@form-item-mini-margin-bottom: 14px;
+@form-item-mini-height: @input-mini-height;
+
+// Pagination
+@pagination-font-size: @font-size-small;
+@pagination-background-color: @color-white;
+@pagination-font-color: @color-text-primary;
+@pagination-border-radius: 2px;
+@pagination-button-color: @color-text-primary;
+@pagination-button-width: @input-small-height; // small
+@pagination-button-height: @input-small-height;
+@pagination-button-disabled-color: @color-text-placeholder;
+@pagination-button-disabled-background-color: @color-white;
+@pagination-hover-color: @color-primary;
+@pagination-item-gap: 1rem;
+@pagination-small-font-size: @font-size-mini;
+@pagination-small-button-width: @input-mini-height; // mini
+@pagination-small-button-height: @input-mini-height;
+
+// Alert
+@alert-padding: 8px 16px;
+@alert-border-radius: @border-radius-base;
+@alert-title-font-size: 13px;
+@alert-description-font-size: 12px;
+@alert-close-font-size: 12px;
+@alert-close-customed-font-size: 13px;
+@alert-success-color: @color-success-lighter;
+@alert-info-color: @color-info-lighter;
+@alert-warning-color: @color-warning-lighter;
+@alert-danger-color: @color-danger-lighter;
+@alert-icon-size: 16px;
+@alert-icon-large-size: 28px;
+
+// Tooltip
+@tooltip-fill: @color-text-primary;
+@tooltip-color: @color-white;
+@tooltip-font-size: 12px;
+@tooltip-border-color: @color-text-primary;
+@tooltip-arrow-size: 6px;
+@tooltip-padding: 8px 10px;
+
+// Dialog
+@dialog-background-color: @color-white;
+@dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+@dialog-title-font-size: @font-size-large;
+@dialog-content-font-size: @font-size-base;
+@dialog-font-line-height: @font-line-height-large;
+@dialog-padding-primary: 1.25rem;
+@dialog-padding-secondary: 1rem;
+
+// Message
+@message-font-size: @font-size-small; // New
+@message-shadow: @box-shadow-base;
+// @message-min-width: 380px;
+@message-background-color: @disabled-fill-base;
+@message-padding-horizontal: 0.75rem; // New
+@message-padding-vertical: 8px; // New
+@message-close-size: 1rem;
+@message-close-color: @color-text-placeholder;
+// @message-close-icon-color: @color-text-placeholder;
+@message-close-hover-color: @color-text-secondary;
+@message-success-font-color: @color-success;
+@message-info-font-color: @color-info;
+@message-warning-font-color: @color-warning;
+@message-danger-font-color: @color-danger;
+
+// MessageBox
+@messagebox-title-color: @color-text-primary;
+// @msgbox-width: 420px;
+// @msgbox-padding-primary: 15px;
+// @msgbox-border-radius: 4px;
+@messagebox-width: 420px; // New
+@messagebox-padding-primary: 16px; // New
+@messagebox-font-size: @font-size-large;
+@messagebox-content-font-size: @font-size-base;
+@messagebox-content-color: @color-text-regular;
+@messagebox-error-font-size: 12px;
+@messagebox-success-color: @color-success;
+@messagebox-info-color: @color-info;
+@messagebox-warning-color: @color-warning;
+@messagebox-danger-color: @color-danger;
+ 
+// Notification
+@notification-width: 330px;
+@notification-padding: 14px 26px 14px 13px;
+@notification-radius: 8px;
+@notification-shadow: @box-shadow-light;
+@notification-border-color: @border-color-lighter;
+@notification-icon-size: 24px;
+@notification-close-font-size: @message-close-size;
+@notification-group-margin-left: 13px;
+@notification-group-margin-right: 8px;
+@notification-content-font-size: @font-size-base;
+@notification-content-color: @color-text-regular;
+@notification-title-font-size: 16px;
+@notification-title-color: @color-text-primary;
+@notification-close-color: @color-text-secondary;
+@notification-close-hover-color: @color-text-regular;
+@notification-success-icon-color: @color-success;
+@notification-info-icon-color: @color-info;
+@notification-warning-icon-color: @color-warning;
+@notification-danger-icon-color: @color-danger;
+
+// Badge
+@badge-background-color: @color-danger;
+@badge-radius: 0.625rem;
+@badge-font-size: 0.75rem;
+@badge-padding: 0.375rem;
+@badge-size: 1.125rem;
+
+// Dropdown
+// @dropdown-menu-box-shadow: @box-shadow-light;
+@dropdown-menu-box-shadow: @select-dropdown-shadow;
+@dropdown-menu-item-padding-horizontal: @select-option-font-size; // New
+@dropdown-menu-item-hover-fill: @link-bg-color;
+@dropdown-menu-item-hover-color: @link-color;
+
+@dropdown-caret-width: @input-height;
+@dropdown-caret-gap: 4px;
+
+@dropdown-caret-small-width: @input-small-height;
+@dropdown-caret-small-gap: 4px;
+@dropdown-menu-small-padding-vertical: 4px;
+@dropdown-menu-item-small-font-size: 13px;
+@dropdown-menu-item-small-height: 28px;
+@dropdown-menu-item-small-padding-horizontal: 12px;
+
+@dropdown-caret-mini-width: @input-mini-height;
+@dropdown-caret-mini-gap: 2px;
+@dropdown-menu-mini-padding-vertical: 3px;
+@dropdown-menu-item-mini-font-size: 12px;
+@dropdown-menu-item-mini-height: 24px;
+@dropdown-menu-item-mini-padding-horizontal: 10px;
+
+// Tree
+@tree-node-hover-background-color: @fill-light;
+@tree-font-color: @color-text-regular;
+@tree-expand-icon-color: @color-text-placeholder;
+
+// Card
+@card-border-color: @border-color-lighter;
+@card-border-radius: 4px;
+@card-padding: 20px;
+
+
+// Group
+// @group-option-flex: 0 0 (1/5) * 100%;
+// @group-option-offset-bottom: 12px;
+// @group-option-fill-hover: fade(@color-black, 6%);
+// @group-title-color: @color-black;
+// @group-title-font-size: @font-size-base;
+// @group-title-width: 66px;
+
+// Tab
+// @tab-font-size: @font-size-base;
+// @tab-border-line: 1px solid #e4e4e4;
+// @tab-header-color-active: @color-text-secondary;
+// @tab-header-color-hover: @color-text-regular;
+// @tab-header-color: @color-text-regular;
+// @tab-header-fill-active: fade(@color-black, 6%);
+// @tab-header-fill-hover: fade(@color-black, 6%);
+// @tab-vertical-header-width: 90px;
+// @tab-vertical-header-count-color: @color-white;
+// @tab-vertical-header-count-fill: @color-text-secondary;
+
+// Tabs
+@tabs-border-color: @border-color-light;
+@tabs-item-height: @component-size-large;
+@tabs-item-padding: 1rem;
+@tabs-item-font-size: @font-size-base;
+@tabs-bar-bg: @color-primary;
+@tabs-bar-size: 1px;
+
+// Table
+@table-border-color: @border-color-lighter;
+@table-border: 1px solid @table-border-color;
+@table-font-color: @color-text-regular;
+@table-header-font-color: @color-text-secondary;
+@table-row-hover-background-color: @fill-light;
+@table-current-row-background-color: @color-primary-light-9;
+@table-header-background-color: @color-white;
+@table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, .12);
+
+/* Popup
+-------------------------- */
+/// color||Color|0
+@popup-modal-background-color: @color-black;
+/// opacity||Other|1
+@popup-modal-opacity: 0.5;
+
+// Popover
+@popover-background-color: @color-white;
+@popover-font-size: @font-size-base;
+// @popover-border-color: @border-color-lighter;
+@popover-border-color: @border-color-light;
+@popover-arrow-size: 6px;
+@popover-padding: 12px;
+@popover-padding-large: 18px 20px;
+@popover-title-font-size: 16px;
+@popover-title-font-color: @color-text-primary;
+
+
+
+
+
+
+/* Steps
+--------------------------*/
+@steps-border-color: @disabled-border-base;
+@steps-border-radius: 4px;
+@steps-padding: 20px;
+
+// Menu
+@menu-active-color: @color-primary;
+@menu-text-color: @color-text-primary;
+@menu-hover-text-color: @color-primary;
+@menu-item-font-size: @font-size-base;
+@menu-item-font-color: @color-text-primary;
+@menu-background-color: @color-white;
+@menu-item-height: 56px;
+@menu-item-hover-fill: @color-primary-light-9;
+@menu-border-color: @border-color-base;
+@menu-base-level-padding: 20px;
+@menu-level-padding: 20px;
+// @menu-sub-item-height: 50px;
+@menu-sub-item-height: @menu-item-height - 6;
+@menu-horizontal-sub-item-height: 36px;
+// @menu-collapse-width: 64px;
+@menu-icon-width: 24px;
+
+
+
+// Loading
+@loading-spinner-size: 42px;
+@loading-fullscreen-spinner-size: 50px;
+
+// Scrollbar
+// @scrollbar-background-color: fade(@color-text-secondary, 30%);
+// @scrollbar-hover-background-color: fade(@color-text-secondary, 50%);
+@scrollbar-size: 8px;
+@scrollbar-gap: 2px;
+@scrollbar-background-color: @color-black;
+@scrollbar-opacity: 0.4;
+@scrollbar-hover-opacity: 0.55;
+@scrollbar-active-opacity: 0.7;
+
+/* Carousel
+--------------------------*/
+/// fontSize||Font|1
+@carousel-arrow-font-size: 12px;
+@carousel-arrow-size: 36px;
+@carousel-arrow-background: rgba(31, 45, 61, 0.11);
+@carousel-arrow-hover-background: rgba(31, 45, 61, 0.23);
+/// width||Other|4
+@carousel-indicator-width: 30px;
+/// height||Other|4
+@carousel-indicator-height: 2px;
+@carousel-indicator-padding-horizontal: 4px;
+@carousel-indicator-padding-vertical: 12px;
+@carousel-indicator-out-color: @border-color-hover;
+
+// Collapse
+@collapse-border-color: @border-color-lighter;
+@collapse-header-height: 48px;
+@collapse-header-background-color: @color-white;
+@collapse-header-font-color: @color-text-primary;
+@collapse-header-font-size: 13px;
+@collapse-content-background-color: @color-white;
+@collapse-content-font-size: 13px;
+@collapse-content-font-color: @color-text-primary;
+
+// Timeline
+@timeline-node-size-normal: 12px;
+@timeline-node-size-large: 14px;
+@timeline-node-color: @border-color-light;
+
+// Header
+@header-padding: 0 20px;
+
+// Footer
+@footer-padding: 0 20px;
+
+// Main
+@main-padding: 20px;
+
+// Backtop
+@backtop-font-color: @color-primary;
+@backtop-background-color: @color-white;
+@backtop-hover-background-color: @border-color-extra-light;
+
+@link-font-size: @font-size-base;
+@link-font-weight: @font-weight-primary;
+@link-default-font-color: @color-text-regular;
+@link-default-active-color: @color-primary;
+@link-disabled-font-color: @color-text-placeholder;
+
+// Calendar
+@calendar-border: @table-border;
+// @calendar-selected-background-color: #F2F8FE;
+@calendar-selected-background-color: @color-primary-light-9;
+@calendar-cell-width: 85px;
+
+/* Avatar
+--------------------------*/
+/// color||Color|0
+@avatar-font-color: #fff;
+/// color||Color|0
+@avatar-background-color: #C0C4CC;
+/// fontSize||Font Size|1
+@avatar-text-font-size: 14px;
+/// fontSize||Font Size|1
+@avatar-icon-font-size: 18px;
+/// borderRadius||Border|2
+@avatar-border-radius: @border-radius-base;
+/// size|1|Avatar Size|3
+@avatar-large-size: 40px;
+/// size|1|Avatar Size|3
+@avatar-medium-size: 36px;
+/// size|1|Avatar Size|3
+@avatar-small-size: 28px;
+
+// Empty
+@empty-padding: 40px 0;
+@empty-image-width: 160px;
+@empty-description-margin-top: 20px;
+@empty-bottom-margin-top: 20px;
+
+/* Descriptions
+-------------------------- */
+@descriptions-header-margin-bottom: 20px;
+@descriptions-title-font-size: 16px;
+@descriptions-table-border: 1px solid @border-color-lighter;
+@descriptions-item-bordered-label-background: #fafafa;
+
+/* Skeleton 
+--------------------------*/
+@skeleton-color: #f2f2f2;
+@skeleton-to-color: #e6e6e6;
+
+/* Svg
+--------------- */
+// @svg-monochrome-grey: #DCDDE0;
+@svg-monochrome-grey: @border-color-base;
+
+/* Result
+-------------------------- */
+@result-padding: 40px 30px;
+@result-icon-font-size: 64px;
+@result-title-font-size: 20px;
+@result-title-margin-top: 20px;
+@result-subtitle-margin-top: 10px;
+@result-extra-margin-top: 30px;
+@result-info-color: @color-info;
+@result-success-color: @color-success;
+@result-warning-color: @color-warning;
+@result-danger-color: @color-danger;
+
+/* Break-point
+--------------------------*/
+@grid-columns: 24;
+@xl: 1920px;
+@lg: 1200px;
+@md: 992px;
+@sm: 768px;
+@xs: (@sm - 0.01);
+
+
+// @breakpoints: (
+//   'xs' : (max-width: @sm - 1),
+//   'sm' : (min-width: @sm),
+//   'md' : (min-width: @md),
+//   'lg' : (min-width: @lg),
+//   'xl' : (min-width: @xl)
+// );
+
+// @breakpoints-spec: (
+//   'xs-only' : (max-width: @sm - 1),
+//   'sm-and-up' : (min-width: @sm),
+//   'sm-only': "(min-width: #{@sm}) and (max-width: #{@md - 1})",
+//   'sm-and-down': (max-width: @md - 1),
+//   'md-and-up' : (min-width: @md),
+//   'md-only': "(min-width: #{@md}) and (max-width: #{@lg - 1})",
+//   'md-and-down': (max-width: @lg - 1),
+//   'lg-and-up' : (min-width: @lg),
+//   'lg-only': "(min-width: #{@lg}) and (max-width: #{@xl - 1})",
+//   'lg-and-down': (max-width: @xl - 1),
+//   'xl-only' : (min-width: @xl),
+// );

@@ -1,0 +1,106 @@
+#__col-span(@class) {
+  @col-zero: ~'@{ns}-col-@{class}-0';
+
+  .@{col-zero} {
+    display: none;
+
+    &.is-guttered {
+      display: none;
+    }
+  }
+
+  .loop-grid-column(@index) when (@index = 0) {
+    @value: percentage(@index / @grid-columns);
+
+    .@{ns}-col-@{class}-@{index} {
+      max-width: @value;
+      flex: 0 0 @value;
+    }
+    .@{ns}-col-@{class}-offset-@{index} {
+      margin-left: @value;
+    }
+    // .@{ns}-col-@{class}-pull-@{index} {
+    //   position: relative;
+    //   right: @value;
+    // }
+    // .@{ns}-col-@{class}-push-@{index} {
+    //   position: relative;
+    //   left: @value;
+    // }
+
+    .loop-grid-column(@index + 1);
+  }
+  
+  .loop-grid-column(@index) when (@index >= 1) and (@index =< @grid-columns) {
+    @value: percentage(@index / @grid-columns);
+
+    .@{ns}-col-@{class}-@{index} {
+      display: block;
+      max-width: @value;
+      flex: 0 0 @value;
+
+      &.is-guttered {
+        display: block;
+      }
+    }
+    .@{ns}-col-@{class}-offset-@{index} {
+      margin-left: @value;
+    }
+    // .@{ns}-col-@{class}-pull-@{index} {
+    //   position: relative;
+    //   right: @value;
+    // }
+    // .@{ns}-col-@{class}-push-@{index} {
+    //   position: relative;
+    //   left: @value;
+    // }
+
+    .loop-grid-column(@index + 1);
+  }
+
+  .loop-grid-column(0); // start
+}
+
+.col-size() {
+  .@{ns}-col-0 {
+    display: none;
+
+    &.is-guttered {
+      display: none;
+    }
+  }
+
+  .loop-grid-column(@index) when (@index =< @grid-columns) {
+    @value: percentage(@index / @grid-columns);
+
+    .@{ns}-col-@{index} {
+      max-width: @value;
+      flex: 0 0 @value;
+    }
+    .@{ns}-col-offset-@{index} {
+      margin-left: @value;
+    }
+    // .@{ns}-col-pull-@{index} {
+    //   position: relative;
+    //   right: @value;
+    // }
+    // .@{ns}-col-push-@{index} {
+    //   position: relative;
+    //   left: @value;
+    // }
+
+    .loop-grid-column(@index + 1);
+  }
+
+  .loop-grid-column(0); // start
+}
+.col-size(xs) {
+  @media only screen and (max-width: @sm) {
+    #__col-span(xs);
+  }
+}
+.col-size(@class) when not (@class = xs) {
+  @media only screen and (min-width: @@class) {
+    #__col-span(@class);
+  }
+}
