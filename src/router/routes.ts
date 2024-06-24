@@ -3,10 +3,9 @@ import Home from '@/layouts/home.vue';
 
 export const staticRoutes: RouteConfig[] = [
   {
-    name: 'Root',
+    name: 'Home',
     path: '/',
     component: Home,
-    meta: { title: '403', nonav: true, nohead: true },
   },
   // {
   //   name: 'Noauth',

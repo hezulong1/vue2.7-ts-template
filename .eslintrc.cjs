@@ -30,7 +30,7 @@ module.exports = {
         { pattern: 'pinia', group: 'external', position: 'before' },
         { pattern: '@vue/**', group: 'external', position: 'before' },
         { pattern: '@vueuse/**', group: 'external', position: 'before' },
-        { pattern: '@element-plus/icons-vue', group: 'external', position: 'before' },
+        { pattern: '@element-plus/icons-svg', group: 'external', position: 'before' },
         ...dependencies,
         { pattern: '@/**', group: 'internal', position: 'after' },
       ],

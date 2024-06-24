@@ -1,0 +1,69 @@
+{
+  "components": {
+    "alert": "ElAlert",
+    "auto-resizer": "ElAutoResizer",
+    "badge": "ElBadge",
+    "button": "ElButton,ElButtonGroup",
+    "card": "ElCard",
+    "checkbox": "ElCheckbox,ElCheckboxGroup",
+    "close": "ElClose",
+    "collapse-transition": "ElCollapseTransition",
+    "date-picker": "ElDatePicker",
+    "dialog": "ElDialog",
+    "drawer": "ElDrawer",
+    "dropdown": "ElDropdown,ElDropdownItem,ElDropdownMenu",
+    "form": "ElForm,ElFormItem",
+    "icon": "ElIcon",
+    "image": "ElImage",
+    "image-viewer": "ElImageViewer",
+    "input": "ElInput",
+    "input-number": "ElInputNumber",
+    "layout": "ElRow, ElCol",
+    "pagination": "ElPagination",
+    "popover": "ElPopover",
+    "progress": "ElProgress",
+    "radio": "ElRadio,ElRadioGroup",
+    "scrollbar": "ElScrollbar",
+    "select": "ElSelect,ElOption,ElOptionGroup",
+    "slider": "ElSlider",
+    "switch": "ElSwitch",
+    "table": "ElTable,ElTableColumn",
+    "tabs": "ElTabs,ElTabPane",
+    "tag": "ElTag",
+    "time-picker": "ElTimePicker",
+    "tooltip": "ElTooltip",
+    "tour": "ElTour,ElTourStep",
+    "tree": "ElTree",
+    "tree-select": "ElTreeSelect",
+    "upload": "ElUpload"
+  },
+  "plugins": {
+    "loading": {
+      "name": "ElLoading",
+      "extractors": {
+        "ElLoadingService": "$loading"
+      }
+    },
+    "message": {
+      "name": "ElMessage",
+      "extractors": {
+        "ElMessage": "$message"
+      }
+    },
+    "message-box": {
+      "name": "ElMessageBox",
+      "extractors": {
+        "ElMessageBox": "$messageBox",
+        "ElMessageBox.alert": "$alert",
+        "ElMessageBox.prompt": "$prompt",
+        "ElMessageBox.confirm": "$confirm"
+      }
+    },
+    "notification": {
+      "name": "ElNotification",
+      "extractors": {
+        "ElNotification": "$notify"
+      }
+    }
+  }
+}

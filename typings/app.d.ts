@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-/// <reference types="unplugin-vue-macros/vue2-macros-global" />
+/// <reference types="unplugin-vue-define-options/vue2-macros-global" />
 
 interface ImportMetaEnv {
 

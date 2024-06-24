@@ -6,11 +6,12 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'hash',
+  base: import.meta.env.BASE_URL,
   routes: staticRoutes,
 });
 
 router.beforeEach((to, from, next) => {
-
+  next();
 });
 
 router.afterEach(() => {
