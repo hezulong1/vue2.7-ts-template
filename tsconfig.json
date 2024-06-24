@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    // Completeness
+    "skipLibCheck": true,
+
+    // Language and Environment
+    "target": "ES2016",
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom", "dom.iterable"],
+
+    // Interop Constraints
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Emit
+    "outDir": "./out",
+    "newLine": "LF",
+    "removeComments": true,
+
+    // Module
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+
+    // Type Checking
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "useUnknownInCatchVariables": false
+  },
+  "vueCompilerOptions": {
+    "target": 2.7,
+    "plugins": ["@vue-macros/volar/define-options"]
+  },
+  "include": [
+    "src",
+    "typings"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.md",
+    "**/out"
+  ]
+}

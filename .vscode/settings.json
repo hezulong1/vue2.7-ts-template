@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    "**/*.docx": true
+  },
+  "git.ignoreLimitWarning": true,
+  "git.branchProtection": [
+    "main"
+  ],
+  "i18n-ally.localesPaths": "src/langs",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
+  "i18n-ally.keystyle": "nested",
+  "search.exclude": {
+    "**/dist": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  }
+}

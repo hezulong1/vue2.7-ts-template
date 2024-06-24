@@ -1,0 +1,9 @@
+node_modules
+out
+.vscode
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+*.ts(x)?
+*.vue
+/index.html

@@ -1,0 +1,129 @@
+@wide:100%;
+@white:#fff;
+@black:#272B33;//new
+@dark:#354052;
+@medium:#414e5f;
+@clearblack:rgba(40,49,66,0.8);//new
+@shallowblack:rgba(39, 43, 51, .5);
+@blue:#25b0e5;
+@brightblue:#38c5fb;
+@brightgreen:#41d2b4;
+@green:#66ad44;
+@orange:#ff9900;
+@red:#e43c3c;
+@clearblue:rgba(37,176,229,0.7);
+@fontcolor:#333;
+@noticefont:#999;
+@ltbgcolor:#ccc;
+@formfont:#a5a5a5;//form fontcolor
+@ltbgcolor2:#f0f3f8;//light grey
+@barline:#d3d8de;
+@grey:#b1b2b5;
+@sidebarbg:#51657f;
+//new attr
+@cleardark:rgba(40,49,66,0.6);
+@iconblue:#63cfdc;
+@rainbow1:#ffccd8;
+@rainbow2:#ffaee0;
+@rainbow3:#ffb9ff;
+@rainbow4:#e5c9ff;
+@rainbow5:#cad7ff;
+@rainbow6:#99f0ff;
+@rainbow7:#79fbf3;
+@icongrey:#cddeed;
+// icons
+@lineblue:#6decfb;
+@linelight:#c5f7fd;
+//new attr end
+@brand:'../assets/img';//公司相关图片路径
+@basicIcon:'/icons/icon_basic.png';//需要版本号的图片路径
+@basicIcon2x:'/icons/icon_basic_2x.png';//需要版本号的图片路径
+@iconimg:'/icon_slide_new.png';
+@aicFormBg:#343D49;//ai细胞学表单主题色
+@thirdCellNum:#c1c2c3;
+@secondCellNum:#e0d01d;
+@labelFontColor:#a0a7af;//ai细胞学label文字色
+
+html{font-size:20px;}
+.nodist(){margin:0;padding:0;}
+.font(){font-family: "微软雅黑";font-size:0.6rem;color:@fontcolor;}
+.wide(){width:@wide; }
+.inline(){display: inline-block;}
+.animate(@ani-time:.3s){-webkit-transition:all @ani-time ease-in-out 0s;-moz-transition:all @ani-time ease-in-out 0s;-ms-transition:all @ani-time ease-in-out 0s;-o-transition:all @ani-time ease-in-out 0s;transition:all @ani-time ease-in-out 0s;}
+.ani-scroll(@ani-time:.3s){-webkit-transition:all @ani-time ease 0s;-moz-transition:all @ani-time ease 0s;-ms-transition:all @ani-time ease 0s;-o-transition:all @ani-time ease 0s;transition:all @ani-time ease 0s;}
+.ani-3{.animate;}
+.ani-5{.animate(.5s);}
+.text-hide(){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+.el-badge__content.is-fixed{//全局badge 样式
+    top:29px;
+    left:4px !important;
+    width:42px;
+    height:26px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    border:none;
+    line-height:26px;
+    font-size:14px;
+}
+
+.clearfix() {
+    &:after{
+        content: ".";
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        display: block;
+        clear: both;
+        overflow:hidden;
+    }
+}
+
+.close-sdbar(@height){//公用关闭按钮
+    float: right;
+    width:36px; 
+    height: @height;
+    cursor: pointer;
+    margin-left:5px;
+    display:block;
+    color:@ltbgcolor;
+    font-size:20px;
+    text-align:center;
+    line-height:@height;
+    &:hover,&:active{color:@blue;}
+}
+
+.keyframes (@name, @frames) {
+    @-webkit-keyframes @name { @frames(); }
+    @-moz-keyframes @name { @frames(); }
+    @-ms-keyframes @name { @frames();}
+    @-o-keyframes @name { @frames(); }
+    @keyframes @name { @frames(); }
+}
+.transform(@attr){
+-webkit-transform:@attr;
+-moz-transform:@attr;
+-o-transform:@attr;
+-ms-transform:@attr;
+transform:@attr;
+}
+.transformOrigin(@attr){
+    -webkit-transform-origin:@attr;
+    -moz-transform-origin:@attr;
+    -o-transform-origin:@attr;
+    -ms-transform-origin:@attr;
+    transform-origin:@attr;
+}
+.animation(@attr){ 
+-webkit-animation: @attr;
+-moz-animation: @attr;
+-ms-animation: @attr;
+-o-animation: @attr;
+animation: @attr;
+}
+
+i.iconimg{
+    display: inline-block;
+    vertical-align: middle;
+    background:url('@{brand}/@{iconimg}') no-repeat;
+}

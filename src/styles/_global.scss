@@ -1,0 +1,301 @@
+@use "vars.scss" as *;
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+form,
+fieldset,
+legend,
+blockquote,
+input,
+textarea,
+select,
+th,
+td,
+section,
+nav,
+article,
+aside,
+hgroup,
+header,
+footer,
+address,
+b,
+em,
+i,
+code {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: $color-font;
+  background-color: $color-white;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+object,
+video,
+embed {
+  width: 100%;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+fieldset,
+img {
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+p {
+  word-wrap: break-word;
+}
+
+select,
+input,
+textarea {
+  vertical-align: middle;
+  background-color: $color-white;
+  border: 1px solid $color-ltbgcolor;
+  border-radius: 0;
+  color: $color-formfont;
+  outline: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+textarea {
+  resize: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="date"] {
+  background: $color-white;
+}
+
+a {
+  color: $color-font;
+  text-decoration: none;
+}
+
+// --------------------------------------------------------
+
+i.dicon {
+  display: inline-block;
+  vertical-align: middle;
+  background: url('@{brand}/@{iconimg}') no-repeat;
+  background-size: 264px auto;
+
+  &.circle {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 2px;
+    border-radius: 50%;
+  }
+}
+
+i.newicon {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('@{brand}/@{basicIcon}');
+  background-repeat: no-repeat;
+  background-size: 390px auto;
+
+  @media (-webkit-min-device-pixel-ratio:2) {
+    background-image: url('@{brand}/@{basicIcon2x}');
+  }
+}
+
+%input-focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.8);
+  outline: 0 none;
+}
+
+input {
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+  &[type="button"] {
+    border: none;
+  }
+
+  &[type="text"]:focus,
+  &[type="password"]:focus {
+    @extend %input-focus;
+  }
+}
+
+textarea {
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+  padding: 3px;
+
+  &:focus {
+    @extend %input-focus;
+  }
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+ins {
+  display: inline-block;
+  text-decoration: none;
+
+  &.half-w {
+    width: 0.5em;
+  }
+
+  &.one-w {
+    width: 1em;
+  }
+
+  &.two-w {
+    width: 2em;
+  }
+
+  &.red {
+    width: 0.5em;
+  }
+}
+
+.clearfix {
+  zoom: 1;
+
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    font: 0/0 sans-serif;
+    visibility: hidden;
+  }
+}
+
+.d-l {
+  float: left;
+}
+
+.d-r {
+  float: right;
+}
+
+.unselected {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.mobile-viewer .el-message {
+  min-width: 300px;
+}
+
+.mini-scrollbar {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: $color-ltbgcolor;
+  }
+}
+
+.mini-scrollbar-dark {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: lighten($color-neutral-medium, 10%);
+  }
+}
+
+.el-image-viewer__mask {
+  opacity: 0.7;
+}
+
+.el-image-viewer__close {
+  transform: translateY(-50%);
+  background-color: #606266;
+  top: 50px;
+
+  i {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.el-message {
+  margin-top: 40vh;
+}
+
+.ali-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

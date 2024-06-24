@@ -1,0 +1,169 @@
+﻿@import 'public';
+.content-mobile{
+    #thumbnail{top:54px;left:10px;}
+    .header-box{width: 100%;position:fixed;left:0;top:0;background-color:@black;z-index: 999;
+                a{display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;position:absolute;top:0;left:0;
+                   &:active{background-color:@dark;}
+                  .hdl-return{width:22px;height:22px;background-position:-52px -88px;}
+                }
+                .hd-title{text-align: center;font-size: 14px;height:44px;line-height: 44px; color:@white;padding:0 44px;.text-hide;}
+    }
+    
+    /*比例尺*/
+    .slide-ruler-m{position:absolute; bottom:44px;padding:0 20px 0 0; left:10px; width:0; height: 30px;transition: width 0.2s;-moz-transition: width 0.2s;-webkit-transition: width 0.2s;-o-transition: width 0.2s;.unselected;
+        .slide-ruler-box{position:relative ;top:0; height: 10px;
+            em{width:2px; height: 10px;background-color:@black; vertical-align: top;display:inline-block;}
+            .ruler-begin{position:absolute; left:-2px; top:0; width:2px; text-align: right; height:100%;border-top:2px solid @black;}
+            .ruler-item{width:100% ;text-align: right; height:100%;border-top:2px solid @black; }
+            .ruler-nums{position:absolute; top:12px; left:-2px; width:100%; font-weight: bold; 
+                .ruler-num{position:absolute; margin-left:-50%; width:100%; font-size:12px;color: @black; top:0; text-align: center;
+                    &.ruler-num0{left:0;}
+                    &.ruler-num1{left:100%;}
+                }
+            }
+        }
+    }
+    //底部工具条
+    .bottom-toolbar{width:100%; height:44px; position:fixed; left:0; right:0; bottom:0; background-color: @medium;z-index: 300; border-top:1px solid  @medium;}
+    .first-btns{width:100%; height:44px;
+        li{width:16.6%; font-size: 16px; color: @ltbgcolor2;float:left; height:44px;line-height: 44px; font-weight: bold;box-sizing:border-box; text-align: center;border-left:1px solid darken(@dark,10%);border-right:1px solid lighten(@dark,10%);
+            &:first-child{border-left:0;}
+            &:last-child{border-right:0;}
+            .toptoolbar-btn{width:100%;height:44px; background-size: auto 50% ;background-repeat: no-repeat;background-position: center;text-align:center;display:inline-block;
+                i{width:30px;height:30px;vertical-align: top;margin-top: 8px;
+                    &.tb-mark{background-position:-60px -60px;}
+                    &.tb-cut{background-position:-30px -60px;}
+                    &.tb-allslides{background-position:-240px -60px;}
+                    &.tb-userset{background-position:-270px -60px;}
+                    &.tb-caseinfo{background-position:0 -60px;}
+                    &.tb-slideinfo{background-position:-150px -60px;}
+                }
+            }
+            &:active,&.active{background-color:@dark;
+            }
+            &.slidelabel{position: relative;
+                .label-box{position: absolute;left:0;right:0;bottom:100%;background-color:@clearblack;
+                    .labels{width:100%;
+                        li{height:30px;line-height: 30px;border-bottom: 1px solid darken(@dark,10%);color:@ltbgcolor;font-weight: bold;width:100%;}
+                    }
+                }
+            }
+        }
+    }
+    /*底部二级操作*/
+    .sbar-inbox(){border:1px solid darken(@ltbgcolor2,4%);background-color:@white;padding:15px;}
+    .second-bar{position:absolute;top:44px;left:0;right:0;bottom:44px;z-index: 320;background-color: @ltbgcolor2;
+        .sdbar-header{position:fixed;top:44px;left:0;width:100%;height: 40px;  text-align: left; border-bottom: 1px solid darken(@ltbgcolor2,10%);background-color:darken(@ltbgcolor2,4%);
+            .sdbar-title{font-size:16px; color:@blue; line-height: 40px; padding-left: 15px;}
+            .close-sdbar{float: right; width:36px; height: 40px; cursor: pointer; margin-left:5px;display:inline-block;color:@fontcolor;font-size:20px;text-align:center;line-height:40px;
+                &:hover,&:active{color:@blue;}
+            }
+        }
+        .sdbar-content{position:absolute;top:40px;left:0;right:0;bottom:0; overflow:auto; padding:10px;border-top:1px solid @white;
+            /*二级栏——联系人信息*/
+            .sdbar-msg-box{.sbar-inbox;
+                //标签图玻片图
+                .tag-img{
+                    img{height:auto;width:auto;max-width:100%;margin-bottom: 10px;display: block;}
+                }
+                .msg-t{line-height:22px;border-bottom: 1px solid @fontcolor;font-weight: bold;color:@dark;font-size:0.7rem;margin-bottom: 8px;}
+                .msg-p{line-height: 18px; font-size:14px; color:@noticefont; padding-bottom:6px;word-break: break-all;
+                    &:last-child{margin-bottom:10px}
+                    span{color:@fontcolor;}
+                }
+            }
+            /*二级栏——切片列表*/
+            .sdbar-slide-list{width:100%;
+                .one-slide{ padding:10px; border:1px solid darken(@ltbgcolor2,6%);background-color:@white; margin-bottom: 5px; cursor: pointer;position:relative;.clearfix;
+                    a{display:inline-block;width:100%;height:100%;overflow: hidden;}
+                    &:hover,&:active, &.active{border:1px solid @blue;background-color:lighten(@blue,40%);}
+                    p{ font-size: 0.65rem; color: @black;line-height: 18px; padding-top:10px;display: block;margin-left:110px}
+                    .img-container{
+                        width:100px; height:71px;float:left;
+                        text-align:center;
+                        border:1px solid #E8ECF0;
+                        img{
+                            height:100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+            /*二级栏——选项*/
+            .controll-box{.sbar-inbox;
+                .each-controll{min-height: 24px; padding-bottom:10px;margin-bottom:10px; font-size:14px; color:@fontcolor; line-height: 24px;border-bottom:1px dashed @ltbgcolor;
+                    &:last-child{padding-bottom: 0;}
+                   .mot-btn{float:right;cursor:pointer;
+                            i{width:47px;height:23px;background-position:-88px -184px;}
+                        &.active{
+                            i{background-position:-88px -209px;}
+                        }
+                   }
+                }
+            }
+            // 二级栏——用户自定义
+            .sdbar-userset{
+                .sdbar-s-title{margin-top:30px;margin-bottom:0;}
+                .el-slider__marks-text{width:26px;font-size:12px;text-align:center;}
+                .el-slider__stop{background-color: lighten(@blue,20%);}
+            }
+        }
+        //较矮的二级栏-标注专用
+        &.short-bar{top:auto;height:102px;bottom:0;
+            .sdbar-header{display: none;}
+            .sdbar-content{top:0px;padding:10px 0;}
+            .sdbar-mark{
+                .sdbar-mark-shape{overflow-y: auto;
+                    .choose-shapes{width:120%;padding:0 10px;
+                        .shapes{width:44px; margin-right:10px; float:left;background-color:lighten(@medium,10%); height:34px; cursor: pointer; text-align: center;line-height: 32px;
+                            &:active, &.active{background-color:@blue;}
+                            i{width:22px;height:22px;}
+                            &.circle-shape i{background-position:-44px -140px;}
+                            &.rect-shape i{background-position:-22px -140px;}
+                            &.ellipse-shape i{background-position:-132px -140px;}
+                            &.flag-shape i{background-position:-110px -140px;}
+                            &.polygon-shape i{background-position:0 -140px;}
+                            &.editpolygon-shape i{background-position:-66px -140px;}
+                            &.clickpolygon-shape i{background-position:-66px -140px;}
+                            &.line-shape i{background-position:-88px -140px;}
+                            &.square-shape i{background-position:0 -162px;}
+                        }
+                    }
+                }
+                .sdbar-mark-color{margin-bottom:6px;
+                    .choose-colors{padding:0 10px;
+                        .colors{float:left;padding:4px;border:1px solid darken(@ltbgcolor2,6%);line-height:20px;margin-right:6px;
+                            &:active, &.active{border-color:@blue;}
+                            span{display:inline-block;width:28px;height:28px;vertical-align:top;border-radius:2px;}
+                        }
+                    }
+                }
+                .close-sdbar{position: absolute;top:0px;right:0px;width:40px; height: 40px; cursor: pointer;display:inline-block;color:@fontcolor;font-size:20px;text-align:center;line-height:40px;
+                    &:active{color:@blue;}
+                }
+            }
+        }
+    }
+
+}
+//截图
+.slide-cropper-box{position: fixed;z-index:199;top:0;bottom:0;left:0;right:0;}
+.pop-edit-window{
+    .el-dialog{border-radius: 5px;}
+    .el-dialog__header{margin-left:0; text-align: left;font-size: 0.8rem;padding:10px 5%;line-height: 20px;height: 20px;font-weight:bold;border-radius:5px 5px 0 0;border-bottom: 1px solid darken(@ltbgcolor2,10%);background-color:darken(@ltbgcolor2,4%);}
+    .el-dialog__body{padding:0;
+        .win-box{margin:10px 15px;padding:5px;}
+    }
+    .btn-box{.clearfix;
+        .btns{padding:0;width:50%;float: left;text-align: center; border:none; cursor: pointer;height: 34px; line-height: 34px;
+            &.btn-yes{background-color: @blue; color: @white;border-bottom-right-radius:5px;
+                &:hover,&:active{background-color:darken(@blue,10%)}
+            }
+            &.btn-no{background-color: #bbb; color: @white;border-bottom-left-radius:5px;
+                &:hover,&:active{background-color:darken(#bbb,10%)}
+            }
+        }
+    }
+}
+//水印
+.watermark-area{position:absolute;top:0;left:0;}

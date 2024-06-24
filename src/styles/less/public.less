@@ -1,0 +1,84 @@
+@import 'config';
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,
+section,nav,article,aside,hgroup,header,footer,address,b,em,i,select {.nodist;font-size:inherit;color:inherit;font-family: inherit;}
+body{ position: relative;.font;width:@wide;overflow:hidden; -webkit-text-size-adjust:none; -moz-text-size-adjust:none; -ms-text-size-adjust:none;-webkit-text-size-adjust:@wide; -moz-text-size-adjust:@wide; -ms-text-size-adjust:@wide;background-color:@white;}
+object,video,embed{ width:@wide;}
+video{ max-width: @wide; height: auto;}
+fieldset,img{ border:none;}
+img{ border:0; vertical-align:middle;width:auto; height:auto;max-width:@wide}
+ul,ol{ list-style:none;}
+li{ list-style-type:none;}
+p{ word-wrap:break-word}
+select,input,textarea{ vertical-align:middle;border: 0; border-radius: 0;outline: none;background-color: @white;color:@formfont;border: 1px solid @ltbgcolor;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;}
+select{ background:@white;outline: none;}
+table{ border-collapse:collapse;border-spacing:0;}
+td{.nodist}
+textarea {resize: none;}
+input[type="button"], input[type="submit"], input[type="reset"],select{-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+input[type="date"] { background: @white;}
+a { text-decoration:none;.font}
+a:active,a:hover{text-decoration:none;}
+a,button,input,div {//去除移动设备默认点击效果闪屏
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+i.dicon{.inline;vertical-align: middle;background:url('@{brand}/@{iconimg}') no-repeat; background-size:264px auto;
+    &.circle{width:22px;height:22px;margin-bottom: 2px;border-radius: 50%;}
+}
+i.newicon{.inline;vertical-align: middle;background-image:url('@{brand}/@{basicIcon}');background-repeat:no-repeat; background-size:390px auto;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2){
+    i.newicon{background-image:url('@{brand}/@{basicIcon2x}');}
+}
+input{
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    &[type="button"]{border: none;}
+    &[type="text"]:focus,&[type="password"]:focus{
+        border-color: rgba(82, 168, 236, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.8);outline: 0 none;
+    }
+}
+
+textarea{
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;padding:3px;
+    &:focus{
+        border-color: rgba(82, 168, 236, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.8);outline: 0 none;
+    }
+}
+body{position: absolute;top:0;left:0;right:0;bottom:0;}
+.clearfix {zoom: 1;
+  &:after {
+    content:".";display:block;clear:both;height:0;font:0/0 sans-serif;visibility:hidden;
+  }
+}
+.d-l{ float:left;}
+.d-r{ float:right;}
+ins{.inline;text-decoration: none;
+    &.half-w {width: 0.5em;}
+    &.one-w {width: 1em;}
+    &.two-w{width: 2em;}
+    &.red{width: 0.5em;}
+}
+.unselected{-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;user-select: none;-webkit-touch-callout:none;}
+.mobile-viewer .el-message{min-width: 300px;}
+.mini-scrollbar{
+    &::-webkit-scrollbar{width : 4px;height: 1px;}
+    &::-webkit-scrollbar-thumb{border-radius: 4px;background : @ltbgcolor;}
+}
+.mini-scrollbar-dark{
+    &::-webkit-scrollbar{width : 4px;height: 1px;}
+    &::-webkit-scrollbar-thumb{border-radius: 4px;background :lighten(@medium,10%);}
+}
+//大图预览
+.el-image-viewer__mask{opacity: 0.7;}
+.el-image-viewer__close{transform: translateY(-50%);background-color: #606266;top:50px;
+    i{font-size:40px;color: rgba(255,255,255,0.8);}
+}
+.el-message{margin-top:40vh;}
+
+.ali-icon{
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
