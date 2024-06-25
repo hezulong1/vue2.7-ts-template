@@ -27,9 +27,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "element-ui": ["./src/components/element-ui/index.ts"],
-      "element-icons": ["./src/components/element-icons/index.ts"]
+      "@/*": ["./src/*"]
     },
 
     // Type Checking

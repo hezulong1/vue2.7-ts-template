@@ -30,7 +30,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         { find: '@/', replacement: `${path.join(rootDir, 'src')}/` },
-        { find: /^(element)-(ui|icons)$/, replacement: `${path.join(rootDir, 'src/components/$1-$2/index.ts')}` },
         // 确保 dayjs 导出的是 esm 格式
         { find: /^(dayjs)(?!\/esm)/, replacement: '$1/esm' },
       ],

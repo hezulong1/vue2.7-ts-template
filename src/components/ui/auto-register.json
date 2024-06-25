@@ -1,0 +1,23 @@
+{
+  "components": {
+    "auto-resizer": "AutoResizer",
+    "button": "Button,ButtonGroup"
+  },
+  "plugins": {
+    "message-box": {
+      "name": "MessageBox",
+      "extractors": {
+        "MessageBox": "$messageBox",
+        "MessageBox.alert": "$alert",
+        "MessageBox.prompt": "$prompt",
+        "MessageBox.confirm": "$confirm"
+      }
+    },
+    "notification": {
+      "name": "Notification",
+      "extractors": {
+        "Notification": "$notify"
+      }
+    }
+  }
+}

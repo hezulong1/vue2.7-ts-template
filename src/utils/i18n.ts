@@ -4,7 +4,7 @@ import zhHans from '@/langs/zh-Hans';
 
 Vue.use(VueI18n);
 
-export const defaultLanguage = 'zh-hans';
+export const defaultLanguage = 'zh-Hans';
 
 const i18n = new VueI18n({
   locale: defaultLanguage,
