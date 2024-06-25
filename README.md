@@ -3,4 +3,4 @@
 
 <br>
 
-A template using the modified ElementUI.
+A template using vue2.7 + typescript.
